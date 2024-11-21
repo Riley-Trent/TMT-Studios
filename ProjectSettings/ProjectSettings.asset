@@ -767,11 +767,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 7c8debcb-78d3-4fc4-94fd-c7fe02454ba1
+  cloudProjectId: 745c7dda-44ec-4fa2-ae73-144bd8e2619c
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Klorb the Bullet Rogue
-  organizationId: michaelpedote
+  organizationId: chompchomp77
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

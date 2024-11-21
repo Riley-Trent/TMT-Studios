@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestWorld.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: 476902dfcfd0c1e4793376fb6da15406
   - enabled: 0
     path: Assets/Scenes/DemoLevel.unity
     guid: f7cd5a733938e834b95ed217a2437feb
