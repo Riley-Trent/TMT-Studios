@@ -1,4 +1,5 @@
 using System.Collections.Specialized;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +12,8 @@ public class RedFox : MonoBehaviour
     public LayerMask setGround, setPlayer;
 
     public float health;
+
+    public float damage = 5f;
 
     //Patroling
     public Vector3 walkPoint;
@@ -97,7 +100,7 @@ public class RedFox : MonoBehaviour
 
         if(!alreadyAttacked)
         {
-            //Attack code goes here
+            player.GetComponent<PlayerStats>().TakeDamage(damage);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -108,7 +111,7 @@ public class RedFox : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
 
