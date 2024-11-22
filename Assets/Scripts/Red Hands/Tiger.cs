@@ -40,8 +40,8 @@ public class Tiger : MonoBehaviour
         health = maxHealth;
         healthBar.SetSliderMax(maxHealth);
 
-        basePlayerSpeed = player.GetComponent<PlayerMotor>().speed;
-        basePlayerJumpHeight = player.GetComponent<PlayerMotor>().jumpHeight;
+        basePlayerSpeed = player.GetComponent<FPSController>().walkSpeed;
+        basePlayerJumpHeight = player.GetComponent<FPSController>().jumpForce;
     }
 
     private void Update()
@@ -131,8 +131,8 @@ public class Tiger : MonoBehaviour
     {
         if(!alreadyAttacked && shadowStrikeStunPossible)
         {
-            player.GetComponent<PlayerMotor>().speed = 0f;
-            player.GetComponent<PlayerMotor>().jumpHeight = 0f;
+            player.GetComponent<FPSController>().walkSpeed = 0f;
+            player.GetComponent<FPSController>().jumpForce = 0f;
             Invoke(nameof(ResetMovement), 1f);
         }
         if(!alreadyAttacked)
@@ -171,7 +171,7 @@ public class Tiger : MonoBehaviour
 
     private void ResetMovement()
     {
-        player.GetComponent<PlayerMotor>().speed = basePlayerSpeed;
-        player.GetComponent<PlayerMotor>().jumpHeight = basePlayerJumpHeight;
+        player.GetComponent<FPSController>().walkSpeed = basePlayerSpeed;
+        player.GetComponent<FPSController>().jumpForce = basePlayerJumpHeight;
     }
 }

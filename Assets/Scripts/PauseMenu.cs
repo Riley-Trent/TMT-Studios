@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        menu = playerControls.Menu.Pause;
+        menu = playerControls.OnFoot.Pause;
         menu.Enable();
 
         menu.performed += Pause;
