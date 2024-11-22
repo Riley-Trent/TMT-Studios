@@ -20,7 +20,6 @@ namespace RealtimeCSG
 			if (sceneView != null)
 			{
 				float height	= sceneView.position.height;//Screen.height;
-				float height	= sceneView.position.height - 10;//Screen.height;
 				float width		= sceneView.position.width;//Screen.width;
 				Rect bottomBarRect;
 				if (haveOffset)
