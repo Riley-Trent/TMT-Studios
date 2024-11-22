@@ -9,11 +9,17 @@ public class RedFox : MonoBehaviour
 
     public Transform player;
 
+    public Transform retreatPoint;
+
     public LayerMask setGround, setPlayer;
 
     public float health;
 
     public float damage = 5f;
+
+    public float moneyStealAmount = 10f;
+
+    public float moneyStolen;
 
     //Patroling
     public Vector3 walkPoint;
@@ -28,10 +34,16 @@ public class RedFox : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    void Start()
+    {
+        moneyStolen = 0f;
+    }
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        retreatPoint = GameObject.Find("RetreatPoint").transform;
     }
 
     private void Update()
@@ -39,17 +51,17 @@ public class RedFox : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, setPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, setPlayer);
 
-        if(!playerInSightRange && !playerInAttackRange)
+        if(!playerInSightRange && !playerInAttackRange && !alreadyAttacked)
         {
             Patroling();
         }
 
-        if(playerInSightRange && !playerInAttackRange)
+        if(playerInSightRange && !playerInAttackRange && !alreadyAttacked)
         {
             ChasePlayer();
         }
 
-        if(playerInSightRange && playerInAttackRange)
+        if(playerInSightRange && playerInAttackRange && !alreadyAttacked)
         {
             AttackPlayer();
         }
@@ -98,11 +110,15 @@ public class RedFox : MonoBehaviour
 
         transform.LookAt(player);
 
+        //Steal Money and run away
         if(!alreadyAttacked)
         {
             player.GetComponent<PlayerStats>().TakeDamage(damage);
+            player.GetComponent<PlayerStats>().RemoveMoney(moneyStealAmount);
+            moneyStolen += moneyStealAmount;
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            agent.SetDestination(retreatPoint.position);
+            Invoke(nameof(DestroyEnemy), 10f);
         }
     }
 
@@ -117,6 +133,7 @@ public class RedFox : MonoBehaviour
 
         if(health <= 0)
         {
+            player.GetComponent<PlayerStats>().AddMoney(moneyStolen);
             Invoke(nameof(DestroyEnemy), .5f);
         }
     }

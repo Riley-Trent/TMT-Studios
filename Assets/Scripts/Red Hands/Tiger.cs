@@ -1,106 +1,152 @@
-using System.Collections.Specialized;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Tiger : MonoBehaviour
 {
-    public NavMeshAgent agent;
 
+    public HealthBar healthBar;
     public Transform player;
+    public Transform boss;
 
-    public LayerMask setGround, setPlayer;
-
+    public LayerMask setPlayer, setWall;
     public float health;
 
-    //Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    [SerializeField] public float maxHealth;
 
+    public float damage = 5f;
+
+    float basePlayerSpeed, basePlayerJumpHeight;
+    public float speed;
+
+    public Vector3 playerPosition;
     //Attacking
     public float timeBetweenAttacks;
-    bool alreadyAttacked;
 
+    public float wildChargeSetupInterval;
+    public bool alreadyAttacked, shadowStrikeDone, wildChargeDone, shadowStrikeStunPossible;
+
+
+    public bool isEncountered;
     //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public float sightRange, attackRange, hitWallRange;
+    public bool playerInSightRange, playerInAttackRange, bossHitWall;
+
+    public bool PhaseOneActive, PhaseTwoActive, PhaseThreeActive;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
+        boss = GameObject.Find("Da Boss").transform;
+        speed = 3f;
+        health = maxHealth;
+        healthBar.SetSliderMax(maxHealth);
+
+        basePlayerSpeed = player.GetComponent<PlayerMotor>().speed;
+        basePlayerJumpHeight = player.GetComponent<PlayerMotor>().jumpHeight;
     }
 
     private void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, setPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, setPlayer);
+        bossHitWall = Physics.CheckSphere(transform.position, hitWallRange, setWall);
 
-        if(!playerInSightRange && !playerInAttackRange)
+        if((playerInSightRange || isEncountered) && health > (maxHealth * 0.67f))
         {
-            Patroling();
+            isEncountered = true;
+            PhaseOneActive = true;
+            PhaseOne();
         }
-
-        if(playerInSightRange && !playerInAttackRange)
+        if(health <= (maxHealth * 0.67f) && health > (maxHealth * 0.33f))
         {
-            ChasePlayer();
+            PhaseOneActive = false;
+            PhaseTwoActive = true;
+            PhaseTwo();
         }
-
-        if(playerInSightRange && playerInAttackRange)
+        if(health <= (maxHealth * 0.33f))
         {
-            AttackPlayer();
+            PhaseTwoActive = false;
+            PhaseThreeActive = true;
+            PhaseThree();
         }
-    }
-
-    private void Patroling()
-    {
-        if(!walkPointSet) SearchWalkPoint();
-
-        if(walkPointSet)
+        if(health <= 0)
         {
-            agent.SetDestination(walkPoint);
+            Destroy(gameObject);
         }
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //Walkpoint reached
-        if(distanceToWalkPoint.magnitude < 1f)
+        if(playerInAttackRange)
         {
-            walkPointSet = false;
+            DoDamage();
         }
     }
 
-    private void SearchWalkPoint()
+    private void PhaseOne()
     {
-        //For picking where to walk around
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, setGround))
+        if(PhaseOneActive)
         {
-            walkPointSet = true;
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, player.position, step);
         }
     }
 
-    private void ChasePlayer()
+    private void PhaseTwo()
     {
-        agent.SetDestination(player.position);
+        if(PhaseTwoActive)
+        {
+            float step = (speed + 1f) * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, player.position, step);
+        }
+        if(PhaseTwoActive && !shadowStrikeDone)
+        {
+            transform.position = new Vector3(player.position.x, player.position.y + 12, player.position.z);
+            shadowStrikeDone = true;
+            shadowStrikeStunPossible = true;
+            Invoke(nameof(ShadowStrikeStun), 2f);
+            Invoke(nameof(ResetShadowStrike), 10f);
+        }
     }
 
-    private void AttackPlayer()
+    private void PhaseThree()
     {
-        agent.SetDestination(transform.position);
+        if(PhaseThreeActive && wildChargeDone)
+        {
+            float step = (speed + 2f) * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, player.position, step);
+        }
+        if(PhaseThreeActive && !wildChargeDone)
+        {
+            //buggy rn
+            float step = (speed + 15f) * Time.deltaTime;
+            if(!bossHitWall)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, player.position, step);
+            }
+            else
+            {
+                wildChargeDone = true;
+                Invoke(nameof(ResetWildCharge), 10f);
+            }
+        }
+    }
 
-        transform.LookAt(player);
-
+    private void DoDamage()
+    {
+        if(!alreadyAttacked && shadowStrikeStunPossible)
+        {
+            player.GetComponent<PlayerMotor>().speed = 0f;
+            player.GetComponent<PlayerMotor>().jumpHeight = 0f;
+            Invoke(nameof(ResetMovement), 1f);
+        }
         if(!alreadyAttacked)
         {
-            //Attack code goes here
+            player.GetComponent<PlayerStats>().TakeDamage(damage);
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            Invoke(nameof(ResetAttack), 1f);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        healthBar.SetSlider(health);
     }
 
     private void ResetAttack()
@@ -108,18 +154,24 @@ public class Tiger : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
+    private void ResetShadowStrike()
     {
-        health -= damage;
-
-        if(health <= 0)
-        {
-            Invoke(nameof(DestroyEnemy), .5f);
-        }
+        shadowStrikeDone = false;
     }
 
-    private void DestroyEnemy()
+    private void ResetWildCharge()
     {
-        Destroy(gameObject);
+        wildChargeDone = false;
+    }
+
+    private void ShadowStrikeStun()
+    {
+        shadowStrikeStunPossible = false;
+    }
+
+    private void ResetMovement()
+    {
+        player.GetComponent<PlayerMotor>().speed = basePlayerSpeed;
+        player.GetComponent<PlayerMotor>().jumpHeight = basePlayerJumpHeight;
     }
 }
