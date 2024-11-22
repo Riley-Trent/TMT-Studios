@@ -27,13 +27,6 @@ public class InputReader : ScriptableObject, PlayerInput.IOnFootActions, PlayerI
         _playerInput.Menu.Disable();
     }
 
-    public void SetMenu()
-    {
-        Debug.Log("Menu Set");
-        _playerInput.OnFoot.Disable();
-        _playerInput.Menu.Enable();
-    }
-
     public event Action<Vector2> MoveEvent;
     public event Action JumpEvent;
     public event Action JumpCancelledEvent;
@@ -84,7 +77,6 @@ public class InputReader : ScriptableObject, PlayerInput.IOnFootActions, PlayerI
         if (context.phase == InputActionPhase.Performed)
         {
             PauseEvent?.Invoke();
-            SetMenu();
         }
     }
 
