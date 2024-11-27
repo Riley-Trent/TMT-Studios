@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 interface IInteractable{
     public void Interact();
+    public void DisplayInteract();
+    public void StopDisplay();
 }
 public class FPSController : MonoBehaviour
 {
@@ -38,6 +40,7 @@ public class FPSController : MonoBehaviour
     private bool isJumping = false;
     private bool isScurrying = false;
     private Vector2 moveInput;
+    private IInteractable lastObject = null;
 
 
     private void Awake(){
@@ -53,6 +56,7 @@ public class FPSController : MonoBehaviour
 
     private void Update(){
         animator.Update(Time.deltaTime);
+        LookForInteract();
         Look();
         Jump();
         Move();
@@ -162,5 +166,32 @@ public class FPSController : MonoBehaviour
         }
 
     }
+
+    void LookForInteract(){
+        Ray r = new Ray(Head.position, Head.forward);
+        if(Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)){
+            if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj)){
+                if(interactObj != lastObject && lastObject != null){
+                    lastObject.StopDisplay();
+                    
+                }
+                lastObject = interactObj;
+                interactObj.DisplayInteract();
+            } else{
+                if(lastObject != null){
+                    lastObject.StopDisplay();
+                    lastObject = null;
+                }
+            }
+        }else {
+            if(lastObject != null){
+                lastObject.StopDisplay();
+                lastObject = null;
+            }
+        }
+
+    }
+
+
 
 }
