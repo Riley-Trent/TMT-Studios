@@ -32,8 +32,11 @@ public class InputReader : ScriptableObject, PlayerInput.IOnFootActions, PlayerI
     public event Action JumpCancelledEvent;
     public event Action ScurryEvent;
     public event Action<Vector2> LookEvent;
+    public event Action InteractEvent;
     public event Action PauseEvent;
     public event Action ResumeEvent;
+
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -68,6 +71,14 @@ public class InputReader : ScriptableObject, PlayerInput.IOnFootActions, PlayerI
         if (context.phase == InputActionPhase.Performed)
         {
             ScurryEvent?.Invoke();
+        }
+
+    }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            InteractEvent?.Invoke();
         }
 
     }

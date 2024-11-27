@@ -43,6 +43,7 @@ public class FPSController : MonoBehaviour
         input.JumpEvent += HandleJumping;
         input.JumpCancelledEvent += HandleJumpingCancelled;
         input.LookEvent += HandleRotation;
+        //input.InteractEvent += whatever interact function;
     
     }
 
