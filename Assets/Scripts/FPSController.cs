@@ -4,6 +4,9 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+interface IInteractable{
+    public void Interact();
+}
 public class FPSController : MonoBehaviour
 {
     [Header("Movement Speeds")]
@@ -18,6 +21,7 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float mouseXSensitivity = 2.0f;
     [SerializeField] private float mouseYSensitivity = 2.0f;
     [SerializeField] private float upDownRange = 80.0f;
+    [SerializeField] private float InteractRange = 80.0f;
 
     [Header("References")]
     [SerializeField] private Animator animator;
@@ -43,7 +47,7 @@ public class FPSController : MonoBehaviour
         input.JumpEvent += HandleJumping;
         input.JumpCancelledEvent += HandleJumpingCancelled;
         input.LookEvent += HandleRotation;
-        //input.InteractEvent += whatever interact function;
+        input.InteractEvent += HandleInteract;
     
     }
 
@@ -149,5 +153,14 @@ public class FPSController : MonoBehaviour
         }
     }
 
+    void HandleInteract(){
+        Ray r = new Ray(Head.position, Head.forward);
+        if(Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)){
+            if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj)){
+                interactObj.Interact();
+            }
+        }
+
+    }
 
 }
