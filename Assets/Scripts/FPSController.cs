@@ -25,13 +25,19 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float upDownRange = 80.0f;
     [SerializeField] private float InteractRange = 80.0f;
 
+    [Header("Misc")]
+    [SerializeField] private float hideDelay = 1.0f;
+
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private InputReader input;
     [SerializeField] Transform Head;
     [SerializeField] private CinemachineVirtualCameraBase firstPersonCamera;
     [SerializeField] private CinemachineVirtualCameraBase thirdPersonCamera;
+    [SerializeField] private GameObject characterModel;
     private CharacterController characterController;
+
+    private Transform ActiveCameraTransform => isScurrying ? thirdPersonCamera.transform : firstPersonCamera.transform;
 
 
     private Vector3 currentMovement;
@@ -111,7 +117,9 @@ public class FPSController : MonoBehaviour
     void Move(){
         float speed = walkSpeed * (isScurrying ? scurryMultiplier : 1f);
 
-        Vector3 inputDirection = new Vector3(moveInput.x, 0f, moveInput.y);
+        //changed from this because animation rotation stumped me
+        //Vector3 inputDirection = new Vector3(moveInput.x, 0f, moveInput.y);
+        Vector3 inputDirection = new Vector3(-moveInput.y, 0f, moveInput.x);
         Vector3 worldDirection = transform.TransformDirection(inputDirection);
         worldDirection.Normalize();
 
@@ -136,7 +144,9 @@ public class FPSController : MonoBehaviour
     {
   
         transform.Rotate(0, mouseXRotation, 0);
-        Head.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        //changed from this because animation rotation stumped me
+        //Head.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        Head.transform.localRotation = Quaternion.Euler(0, 0, verticalRotation);
     }
 
     void SwitchToThirdPerson()
@@ -145,6 +155,8 @@ public class FPSController : MonoBehaviour
         {
             thirdPersonCamera.Priority = 10;
             firstPersonCamera.Priority = 0;
+
+            ShowCharacter();
         }
     }
 
@@ -154,44 +166,78 @@ public class FPSController : MonoBehaviour
         {
             firstPersonCamera.Priority = 10;
             thirdPersonCamera.Priority = 0;
+
+            StartCoroutine(HideCharacterAfterDelay());
         }
     }
 
-    void HandleInteract(){
-        Ray r = new Ray(Head.position, Head.forward);
-        if(Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)){
-            if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj)){
-                interactObj.Interact();
+
+    private bool TryRaycastInteractable(out IInteractable interactObj)
+    {
+        Ray ray = new Ray(ActiveCameraTransform.position, ActiveCameraTransform.forward);
+        DebugRaycast(Head.position, ActiveCameraTransform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, InteractRange))
+        {
+            if (hitInfo.collider.gameObject.TryGetComponent(out interactObj))
+            {
+                return true;
             }
         }
 
+        interactObj = null;
+        return false;
+    }
+    void DebugRaycast(Vector3 origin, Vector3 direction)
+    {
+        Debug.DrawRay(origin, direction * InteractRange, Color.red, 0.1f);
+    }
+    void HandleInteract()
+    {
+        if (TryRaycastInteractable(out IInteractable interactObj))
+        {
+            interactObj.Interact();
+        }
     }
 
-    void LookForInteract(){
-        Ray r = new Ray(Head.position, Head.forward);
-        if(Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)){
-            if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj)){
-                if(interactObj != lastObject && lastObject != null){
-                    lastObject.StopDisplay();
-                    
-                }
+    void LookForInteract()
+    {
+        if (TryRaycastInteractable(out IInteractable interactObj))
+        {
+            if (interactObj != lastObject)
+            {
+                lastObject?.StopDisplay();
                 lastObject = interactObj;
                 interactObj.DisplayInteract();
-            } else{
-                if(lastObject != null){
-                    lastObject.StopDisplay();
-                    lastObject = null;
-                }
-            }
-        }else {
-            if(lastObject != null){
-                lastObject.StopDisplay();
-                lastObject = null;
             }
         }
-
+        else
+        {
+            lastObject?.StopDisplay();
+            lastObject = null;
+        }
     }
 
+    void HideCharacter()
+    {
+        if (characterModel != null)
+        {
+            characterModel.SetActive(false);
+        }
+    }
 
+    void ShowCharacter()
+    {
+        if (characterModel != null)
+        {
+            characterModel.SetActive(true);
+        }
+    }
+
+    IEnumerator HideCharacterAfterDelay()
+    {
+        yield return new WaitForSeconds(hideDelay);
+        HideCharacter();
+    }
 
 }
