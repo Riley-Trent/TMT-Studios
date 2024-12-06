@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     public float money;
 
     public TextMeshProUGUI moneyText, moneyLostText, hpGainText;
+    private FPSController fpsController;
 
     AudioSource audio;
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class PlayerStats : MonoBehaviour
         moneyText.text = money.ToString() + " ¢";
         healthBar.SetSliderMax(maxHealth);
         audio = GetComponent<AudioSource>();
+        fpsController = GetComponent<FPSController>();
     }
 
     public void TakeDamage(float amount)
@@ -68,6 +70,24 @@ public class PlayerStats : MonoBehaviour
         moneyLostText.text = "+ " + amount.ToString() + " ¢";
         moneyText.text = money.ToString() + " ¢";
         moneyLostUI.GetComponent<Graphic>().CrossFadeAlpha(0f, 2f, false);
+    }
+    public void ApplyStun(float duration)
+    {
+        if (fpsController != null)
+        {
+            fpsController.walkSpeed = 0f;
+            fpsController.jumpForce = 0f;
+
+            Invoke(nameof(RemoveStun), duration);
+        }
+    }
+
+    private void RemoveStun()
+    {
+        if (fpsController != null)
+        {
+            fpsController.ResetMovement();
+        }
     }
 
     void Update()
