@@ -7,7 +7,7 @@ public class TasmanianDevil : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public Transform player, self;
+    public Transform player;
 
     public LayerMask setGround, setPlayer;
 
@@ -16,6 +16,13 @@ public class TasmanianDevil : MonoBehaviour
     public float damage = 5f;
 
     [SerializeField] public GameObject HealthyHerb;
+
+    public Camera camera;
+    MeshRenderer renderer;
+    Plane[] cameraFrustum;
+    Collider collider;
+
+    public bool isLookedAt;
 
     //Patroling
     public Vector3 walkPoint;
@@ -39,12 +46,13 @@ public class TasmanianDevil : MonoBehaviour
 
     void Start()
     {
+        renderer = GetComponent<MeshRenderer>();
+        collider = GetComponent<Collider>();
     }
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        self = GameObject.Find("Devil").transform;
         agent = GetComponent<NavMeshAgent>();
         agentSpeed = agent.speed;
         playerBaseWalkSpeed = player.GetComponent<FPSController>().walkSpeed;
@@ -75,6 +83,18 @@ public class TasmanianDevil : MonoBehaviour
         if(playerInSightRange && playerInAttackRange && !alreadyAttacked)
         {
             AttackPlayer();
+        }
+
+        //for telling if player is looking at enemy.
+        var bounds = collider.bounds;
+        cameraFrustum = GeometryUtility.CalculateFrustumPlanes(camera);
+        if(GeometryUtility.TestPlanesAABB(cameraFrustum, bounds))
+        {
+            isLookedAt = true;
+        }
+        else
+        {
+            isLookedAt = false;
         }
     }
 
@@ -145,55 +165,15 @@ public class TasmanianDevil : MonoBehaviour
 
     public void Grin()
     {
-        float absoluteSelfAngleMin, absoluteSelfAngleMax, absolutePlayerAngleMin, absolutePlayerAngleMax;
-
-        if(self.localEulerAngles.y - 90f < 0)
-        {
-            absoluteSelfAngleMin = self.localEulerAngles.y - 90f + 360f;
-        }
-        else
-        {
-            absoluteSelfAngleMin = self.localEulerAngles.y - 90f;
-        }
-
-        if(self.localEulerAngles.y + 90f > 360)
-        {
-            absoluteSelfAngleMax = self.localEulerAngles.y + 90f - 360f;
-        }
-        else
-        {
-            absoluteSelfAngleMax = self.localEulerAngles.y + 90f;
-        }
-
-        if(player.localEulerAngles.y - 180f < 0)
-        {
-            absolutePlayerAngleMin = player.localEulerAngles.y - 180f + 360f;
-        }
-        else
-        {
-            absolutePlayerAngleMin = player.localEulerAngles.y - 180f;
-        }
-
-        if(player.localEulerAngles.y + 180f > 360)
-        {
-            absolutePlayerAngleMax = player.localEulerAngles.y + 180f - 360f;
-        }
-        else
-        {
-            absolutePlayerAngleMax = player.localEulerAngles.y + 180f;
-        }
-
-
         transform.LookAt(player);
-        if((absoluteSelfAngleMin <= absolutePlayerAngleMin) && (absoluteSelfAngleMax >= absolutePlayerAngleMax))
+        if(isLookedAt)
         {
             player.GetComponent<FPSController>().walkSpeed = 0f;
             player.GetComponent<FPSController>().jumpForce = 0f;
             Invoke(nameof(ResetStun), 3f);
         }
-        Debug.Log("Player Min: " + absolutePlayerAngleMin + " Player Max: " + absolutePlayerAngleMax + ". Enemy Min: " + absoluteSelfAngleMin + " Enemy Max: " + absoluteSelfAngleMax);
         agent.speed = agentSpeed;
-        Invoke(nameof(ResetGrin), 3f);
+        Invoke(nameof(ResetGrin), 10f);
     }
 
     public void ResetGrin()
