@@ -33,6 +33,7 @@ public class FPSController : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private float hideDelay = 1.0f;
+    [SerializeField] private PlayerGunSelector GunSelector;
 
     [Header("References")]
     [SerializeField] private Animator animator;
@@ -50,7 +51,7 @@ public class FPSController : MonoBehaviour
     private float mouseXRotation;
     private float verticalRotation;
     private bool isJumping = false;
-    public bool isScurrying = false;
+    private bool isScurrying = false;
     private Vector2 moveInput;
     private IInteractable lastObject = null;
     public bool wasGrounded;
@@ -69,6 +70,7 @@ public class FPSController : MonoBehaviour
         input.JumpCancelledEvent += HandleJumpingCancelled;
         input.LookEvent += HandleRotation;
         input.InteractEvent += HandleInteract;
+        input.AttackEvent += HandleAttack;
         HideCharacter();
     
     }
@@ -106,6 +108,7 @@ public class FPSController : MonoBehaviour
         if (moveInput.magnitude > 0.1f)
         {
             animator.SetBool("IsMoving", true);
+
         }
         else
         {
@@ -131,6 +134,11 @@ public class FPSController : MonoBehaviour
         verticalRotation -= lookRotation.y * mouseYSensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
         
+    }
+    void HandleAttack(){
+        if(GunSelector.ActiveGun != null){
+            GunSelector.ActiveGun.Shoot();
+        }
     }
 
     void Move(){

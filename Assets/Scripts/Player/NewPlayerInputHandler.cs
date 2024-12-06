@@ -10,7 +10,7 @@ public class NewPlayerInputHandler : MonoBehaviour
 
     [Header("Action Map Name References")]
     [SerializeField] private string actionMapName = "OnFoot";
-    [SerializeField] private string UIactionMapName = "UI";
+    [SerializeField] private string UIactionMapName = "Menu";
 
     [Header("Action Name References")]
     [SerializeField] private string move = "Move";
@@ -18,6 +18,7 @@ public class NewPlayerInputHandler : MonoBehaviour
     [SerializeField] private string jump = "Jump";
     [SerializeField] private string scurry = "Scurry";
     [SerializeField] private string pause = "Pause";
+    [SerializeField] private string attack = "Attack";
 
     [Header("UI Action Name References")]
     [SerializeField] private string resume = "Resume";
@@ -28,6 +29,7 @@ public class NewPlayerInputHandler : MonoBehaviour
     private InputAction jumpAction;
     private InputAction scurryAction;
     private InputAction pauseAction;
+    private InputAction attackAction;
 
 
     private InputAction resumeAction;
@@ -39,6 +41,7 @@ public class NewPlayerInputHandler : MonoBehaviour
     public bool JumpTriggered { get; private set; }
     public float ScurryValue { get; private set; }
     public bool PauseTriggered { get; private set; }
+    public bool attackTriggered { get; private set; }
 
 
     public static NewPlayerInputHandler Instance {get; private set; }
@@ -56,6 +59,7 @@ public class NewPlayerInputHandler : MonoBehaviour
         jumpAction = playerControls.FindActionMap(actionMapName).FindAction(jump);
         scurryAction = playerControls.FindActionMap(actionMapName).FindAction(scurry);
         pauseAction = playerControls.FindActionMap(actionMapName).FindAction(pause);
+        attackAction = playerControls.FindActionMap(actionMapName).FindAction(attack);
 
         resumeAction = playerControls.FindActionMap(UIactionMapName).FindAction(resume);
         
@@ -76,6 +80,8 @@ public class NewPlayerInputHandler : MonoBehaviour
         scurryAction.canceled += context => ScurryValue = 0f;
 
         pauseAction.performed += context => PauseTriggered = true;
+
+        attackAction.performed += context => attackTriggered = true;
    
     }
 
@@ -86,6 +92,7 @@ public class NewPlayerInputHandler : MonoBehaviour
         jumpAction.Enable();
         scurryAction.Enable();
         pauseAction.Enable();
+        attackAction.Enable();
     }
 
     private void OnDisable(){
@@ -94,5 +101,6 @@ public class NewPlayerInputHandler : MonoBehaviour
         jumpAction.Disable();
         scurryAction.Disable();
         pauseAction.Disable();
+        attackAction.Disable();
     }
 }
