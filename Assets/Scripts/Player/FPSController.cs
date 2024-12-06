@@ -18,6 +18,8 @@ public class FPSController : MonoBehaviour
     [Header("Movement Speeds")]
     [SerializeField] public float walkSpeed = 3.0f;
     [SerializeField] public float scurryMultiplier = 2.0f;
+    [SerializeField] public float baseWalkSpeed = 3.0f;
+    [SerializeField] public float baseJumpForce = 5.0f;
 
     [Header("Jump Parameters")]
     [SerializeField] public float jumpForce = 5.0f;
@@ -51,10 +53,16 @@ public class FPSController : MonoBehaviour
     public bool isScurrying = false;
     private Vector2 moveInput;
     private IInteractable lastObject = null;
+    public bool wasGrounded;
+    private float groundCheckDelay = 0.1f;
+    private float lastGroundedTime;
 
 
     private void Awake(){
         characterController = GetComponent<CharacterController>();
+        wasGrounded = characterController.isGrounded;
+        baseWalkSpeed = walkSpeed;
+        baseJumpForce = jumpForce;
         input.MoveEvent += HandleMovement;
         input.ScurryEvent += ToggleScurry;
         input.JumpEvent += HandleJumping;
@@ -74,6 +82,11 @@ public class FPSController : MonoBehaviour
         
     }
 
+    public void ResetMovement()
+    {
+        walkSpeed = baseWalkSpeed;
+        jumpForce = baseJumpForce;
+    }
     void ToggleScurry(){
         isScurrying = !isScurrying;
         if(isScurrying){
@@ -104,6 +117,7 @@ public class FPSController : MonoBehaviour
     void HandleJumping(){
         isJumping = true;
         animator.SetBool("IsJumping", true);
+        if (isJumping) SoundManager.PlaySound(SoundType.JUMP);
     }
 
     void HandleJumpingCancelled(){
@@ -133,16 +147,25 @@ public class FPSController : MonoBehaviour
         
 
         characterController.Move(currentMovement * Time.deltaTime);
+
     }
     void Jump(){
         if(characterController.isGrounded){
+            lastGroundedTime = Time.time;
+            if (!wasGrounded && Time.time - lastGroundedTime > groundCheckDelay)
+            {
+                SoundManager.PlaySound(SoundType.LAND);
+                wasGrounded = true;
+            }
             currentMovement.y = -0.5f;
             if(isJumping){
                 currentMovement.y = jumpForce;
             }
         }else{
             currentMovement.y -= gravity * Time.deltaTime;
+            
         }
+        wasGrounded = characterController.isGrounded;
     }
 
     void Look()
