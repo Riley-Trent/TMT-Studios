@@ -17,7 +17,7 @@ public class FPSController : MonoBehaviour
 
     [Header("Movement Speeds")]
     [SerializeField] public float walkSpeed = 3.0f;
-    [SerializeField] public float scurryMultiplier = 2.0f;
+    [SerializeField] private float scurryMultiplier = 2.0f;
 
     [Header("Jump Parameters")]
     [SerializeField] public float jumpForce = 5.0f;
@@ -31,6 +31,7 @@ public class FPSController : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private float hideDelay = 1.0f;
+    [SerializeField] private PlayerGunSelector GunSelector;
 
     [Header("References")]
     [SerializeField] private Animator animator;
@@ -48,7 +49,7 @@ public class FPSController : MonoBehaviour
     private float mouseXRotation;
     private float verticalRotation;
     private bool isJumping = false;
-    public bool isScurrying = false;
+    private bool isScurrying = false;
     private Vector2 moveInput;
     private IInteractable lastObject = null;
 
@@ -61,6 +62,7 @@ public class FPSController : MonoBehaviour
         input.JumpCancelledEvent += HandleJumpingCancelled;
         input.LookEvent += HandleRotation;
         input.InteractEvent += HandleInteract;
+        input.AttackEvent += HandleAttack;
         HideCharacter();
     
     }
@@ -93,6 +95,7 @@ public class FPSController : MonoBehaviour
         if (moveInput.magnitude > 0.1f)
         {
             animator.SetBool("IsMoving", true);
+
         }
         else
         {
@@ -118,6 +121,11 @@ public class FPSController : MonoBehaviour
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
         
     }
+    void HandleAttack(){
+        if(GunSelector.ActiveGun != null){
+            GunSelector.ActiveGun.Shoot();
+        }
+    }
 
     void Move(){
         float speed = walkSpeed * (isScurrying ? scurryMultiplier : 1f);
@@ -136,6 +144,7 @@ public class FPSController : MonoBehaviour
     }
     void Jump(){
         if(characterController.isGrounded){
+            
             currentMovement.y = -0.5f;
             if(isJumping){
                 currentMovement.y = jumpForce;
@@ -143,6 +152,7 @@ public class FPSController : MonoBehaviour
         }else{
             currentMovement.y -= gravity * Time.deltaTime;
         }
+
     }
 
     void Look()
