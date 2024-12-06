@@ -183,16 +183,8 @@ public class TasmanianDevil : MonoBehaviour
 
     public void ResetStun()
     {
-        if(player.GetComponent<FPSController>().isScurrying)
-        {
-            player.GetComponent<FPSController>().walkSpeed = playerBaseWalkSpeed * player.GetComponent<FPSController>().scurryMultiplier;
-        }
-        else
-        {
-            player.GetComponent<FPSController>().walkSpeed = playerBaseWalkSpeed;
-        }
+        player.GetComponent<FPSController>().walkSpeed = playerBaseWalkSpeed;
         player.GetComponent<FPSController>().jumpForce = playerBaseJumpHeight;
-
     }
 
     public void TakeDamage(float damage)
