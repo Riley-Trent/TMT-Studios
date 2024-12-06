@@ -21,6 +21,8 @@ public class RedFox : MonoBehaviour
 
     public float moneyStolen;
 
+    [SerializeField] public GameObject HealthyHerb;
+
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -65,6 +67,7 @@ public class RedFox : MonoBehaviour
         {
             AttackPlayer();
         }
+
     }
 
     private void Patroling()
@@ -114,11 +117,25 @@ public class RedFox : MonoBehaviour
         if(!alreadyAttacked)
         {
             player.GetComponent<PlayerStats>().TakeDamage(damage);
-            player.GetComponent<PlayerStats>().RemoveMoney(moneyStealAmount);
-            moneyStolen += moneyStealAmount;
+            if(player.GetComponent<PlayerStats>().money <= 0)
+            {
+                Invoke(nameof(ResetAttack), 2f);
+            }
+            else if(player.GetComponent<PlayerStats>().money < 10)
+            {
+                moneyStolen += player.GetComponent<PlayerStats>().money;
+                player.GetComponent<PlayerStats>().RemoveMoney(player.GetComponent<PlayerStats>().money);
+                agent.SetDestination(retreatPoint.position);
+                Invoke(nameof(DestroyEnemyNoPickup), 10f);
+            }
+            else
+            {
+                moneyStolen += moneyStealAmount;
+                player.GetComponent<PlayerStats>().RemoveMoney(moneyStealAmount);
+                agent.SetDestination(retreatPoint.position);
+                Invoke(nameof(DestroyEnemyNoPickup), 10f);
+            }
             alreadyAttacked = true;
-            agent.SetDestination(retreatPoint.position);
-            Invoke(nameof(DestroyEnemy), 10f);
         }
     }
 
@@ -139,6 +156,12 @@ public class RedFox : MonoBehaviour
     }
 
     private void DestroyEnemy()
+    {
+        Instantiate(HealthyHerb, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    private void DestroyEnemyNoPickup()
     {
         Destroy(gameObject);
     }
