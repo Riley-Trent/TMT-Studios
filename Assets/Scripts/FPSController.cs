@@ -11,6 +11,10 @@ interface IInteractable{
 }
 public class FPSController : MonoBehaviour
 {
+    [Header("DialogueUI")]
+    [SerializeField] private DialogueUI dialogueUI; 
+    public DialogueUI DialogueUI => dialogueUI;
+
     [Header("Movement Speeds")]
     [SerializeField] public float walkSpeed = 3.0f;
     [SerializeField] private float scurryMultiplier = 2.0f;
