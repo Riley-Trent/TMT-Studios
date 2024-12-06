@@ -55,6 +55,26 @@ public class GunScriptableObject : ScriptableObject
                     ShootConfig.HitMask
             )){
                 ActiveMonoBehaviour.StartCoroutine(PlayTrail(Model.transform.position + GunTip, hit.point, hit));
+                if(hit.collider.gameObject.tag == ("Enemy"))
+                {
+                    if(hit.collider.gameObject.TryGetComponent<RedFox>(out RedFox redFox))
+                    {
+                        redFox.TakeDamage(10);
+                    }
+                    if (hit.collider.gameObject.TryGetComponent<Thumper>(out Thumper thumper))
+                    {
+                        thumper.TakeDamage(10);
+                    }
+                    if (hit.collider.gameObject.TryGetComponent<TasmanianDevil>(out TasmanianDevil tasmanianDevil))
+                    {
+                        tasmanianDevil.TakeDamage(10);
+                    }
+                    if (hit.collider.gameObject.TryGetComponent<Tiger>(out Tiger tiger))
+                    {
+                        tiger.TakeDamage(10);
+                    }
+                }
+
             } else {
                 ActiveMonoBehaviour.StartCoroutine(PlayTrail(
                     Model.transform.position + GunTip,
