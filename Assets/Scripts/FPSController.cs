@@ -13,7 +13,7 @@ public class FPSController : MonoBehaviour
 {
     [Header("Movement Speeds")]
     [SerializeField] public float walkSpeed = 3.0f;
-    [SerializeField] private float scurryMultiplier = 2.0f;
+    [SerializeField] public float scurryMultiplier = 2.0f;
 
     [Header("Jump Parameters")]
     [SerializeField] public float jumpForce = 5.0f;
@@ -44,7 +44,7 @@ public class FPSController : MonoBehaviour
     private float mouseXRotation;
     private float verticalRotation;
     private bool isJumping = false;
-    private bool isScurrying = false;
+    public bool isScurrying = false;
     private Vector2 moveInput;
     private IInteractable lastObject = null;
 

@@ -2334,6 +2334,170 @@ Transform:
   - {fileID: 1814457016}
   m_Father: {fileID: 183988455}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &49168884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 49168885}
+  - component: {fileID: 49168890}
+  - component: {fileID: 49168889}
+  - component: {fileID: 49168888}
+  - component: {fileID: 49168887}
+  - component: {fileID: 49168886}
+  m_Layer: 0
+  m_Name: Devil
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &49168885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49168884}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -28.48, y: -6.2, z: -8.82}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1310263908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &49168886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49168884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead0aa49a7d484a438fcc70edb709dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  self: {fileID: 0}
+  setGround:
+    serializedVersion: 2
+    m_Bits: 64
+  setPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  health: 60
+  damage: 5
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 1
+  timeBetweenAttacks: 3
+  sightRange: 20
+  attackRange: 2
+  grinRange: 6
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  playerInGrinRange: 0
+--- !u!195 &49168887
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49168884}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!136 &49168888
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49168884}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &49168889
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49168884}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1e1c6a0a64beb49ec96272beefa468a5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &49168890
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49168884}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &52016200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,6 +3115,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 88015511}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -3023,7 +3188,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4141,53 +4306,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115359606}
   m_CullTransparentMesh: 1
---- !u!1 &118234429
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 118234430}
-  - component: {fileID: 118234431}
-  m_Layer: 0
-  m_Name: '[generated-meshes]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &118234430
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118234429}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2046219381}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &118234431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118234429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3643d4978096d4880d7edbf4f65a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Version: 1
-  owner: {fileID: 2046219380}
-  helperSurfaces: []
 --- !u!1 &118339358
 GameObject:
   m_ObjectHideFlags: 0
@@ -13716,6 +13834,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -13788,7 +13907,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14775,53 +14894,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1566539689}
   m_SourcePrefab: {fileID: 100100000, guid: 9a054218110e7774cb00b700ee363f87, type: 3}
---- !u!1 &394174521
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 394174522}
-  - component: {fileID: 394174523}
-  m_Layer: 0
-  m_Name: '[generated-meshes]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &394174522
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394174521}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1772730092}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &394174523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394174521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3643d4978096d4880d7edbf4f65a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Version: 1
-  owner: {fileID: 1772730091}
-  helperSurfaces: []
 --- !u!1 &402480219
 GameObject:
   m_ObjectHideFlags: 0
@@ -18405,6 +18477,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -18477,7 +18550,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20588,7 +20661,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!1 &583397515
 GameObject:
-  m_ObjectHideFlags: 3
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -20605,7 +20678,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &583397516
 Transform:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -20623,7 +20696,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &583397517
 MonoBehaviour:
-  m_ObjectHideFlags: 27
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -23305,6 +23378,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -23377,7 +23451,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24750,11 +24824,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9a054218110e7774cb00b700ee363f87, type: 3}
   m_PrefabInstance: {fileID: 1776181916}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &676483434 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8619872867445787734, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
-  m_PrefabInstance: {fileID: 867681591}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &676734119 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 9a054218110e7774cb00b700ee363f87, type: 3}
@@ -25090,10 +25159,11 @@ MonoBehaviour:
   setPlayer:
     serializedVersion: 2
     m_Bits: 128
-  health: 30
+  health: 0
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -25166,7 +25236,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25376,6 +25446,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -25448,7 +25519,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25749,6 +25820,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -25821,7 +25893,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27219,6 +27291,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -27291,7 +27364,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29487,6 +29560,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -29559,7 +29633,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -31833,6 +31907,10 @@ PrefabInstance:
       propertyPath: moneyText
       value: 
       objectReference: {fileID: 656730793}
+    - target: {fileID: 6679923855135879639, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: m_StepOffset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8619872867445787734, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -33473,6 +33551,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -33545,7 +33624,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -36883,6 +36962,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -36955,7 +37035,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37905,6 +37985,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -37977,7 +38058,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38099,6 +38180,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 990704488}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -38171,7 +38253,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -41482,6 +41564,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -41554,7 +41637,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -44942,7 +45025,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!1 &1113703510
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -44961,7 +45044,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1113703511
 Transform:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -44976,7 +45059,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1113703512
 MeshRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -45018,7 +45101,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1113703513
 MeshFilter:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -45045,7 +45128,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 28532
+    surfaceParameter: 27980
     meshQueryIndex: 0
     subMeshQueryIndex: 0
     geometryHashValue: -159679964117849719
@@ -45623,6 +45706,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -45695,7 +45779,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52318,6 +52402,7 @@ Transform:
   - {fileID: 533649683}
   - {fileID: 1124464060}
   - {fileID: 1054044999}
+  - {fileID: 49168885}
   - {fileID: 639382660}
   - {fileID: 990704494}
   - {fileID: 88015517}
@@ -54894,6 +54979,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -54966,7 +55052,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55584,7 +55670,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 676483434}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1411194033
 AudioSource:
@@ -56850,6 +56936,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -56922,7 +57009,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -57835,7 +57922,7 @@ MonoBehaviour:
     Generation: 31
 --- !u!1 &1463114688
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -57853,7 +57940,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1463114689
 Transform:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -57868,7 +57955,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1463114690
 MeshCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -57909,7 +57996,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 28626
+    surfaceParameter: 28076
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: -159679964117849719
@@ -66392,6 +66479,73 @@ MonoBehaviour:
     - EdgeIndices: 07000000060000000500000004000000
       TexGenIndex: 5
     Generation: 2
+--- !u!1 &1738672725
+GameObject:
+  m_ObjectHideFlags: 17
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738672727}
+  - component: {fileID: 1738672726}
+  m_Layer: 0
+  m_Name: '[default-CSGModel]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 124
+  m_IsActive: 1
+--- !u!114 &1738672726
+MonoBehaviour:
+  m_ObjectHideFlags: 17
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738672725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8672dcc90e16b0a489a41edf56e016f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 1.1
+  infiniteBrush: {fileID: 0}
+  Settings: 1025
+  VertexChannels: 14
+  ReceiveGI: 2
+  MeshColliderCookingOptions: 14
+  ShowGeneratedMeshes: 0
+  DefaultPhysicsMaterial: {fileID: 0}
+  exportType: 0
+  originType: 0
+  exportColliders: 0
+  exportPath: 
+  angleError: 1
+  areaError: 1
+  hardAngle: 60
+  packMargin: 20
+  scaleInLightmap: 1
+  autoUVMaxDistance: 0.5
+  autoUVMaxAngle: 89
+  minimumChartSize: 4
+--- !u!4 &1738672727
+Transform:
+  m_ObjectHideFlags: 17
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738672725}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1745484112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67123,6 +67277,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -67195,7 +67350,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67765,102 +67920,6 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
---- !u!1 &1772730089
-GameObject:
-  m_ObjectHideFlags: 17
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1772730092}
-  - component: {fileID: 1772730091}
-  - component: {fileID: 1772730090}
-  m_Layer: 0
-  m_Name: '[default-CSGModel]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 124
-  m_IsActive: 1
---- !u!54 &1772730090
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772730089}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!114 &1772730091
-MonoBehaviour:
-  m_ObjectHideFlags: 17
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772730089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8672dcc90e16b0a489a41edf56e016f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrefabBehaviour: 0
-  PrefabSourceAlignment: 4
-  PrefabDestinationAlignment: 0
-  Version: 1.1
-  infiniteBrush: {fileID: 0}
-  Settings: 1025
-  VertexChannels: 14
-  ReceiveGI: 2
-  MeshColliderCookingOptions: 14
-  ShowGeneratedMeshes: 0
-  DefaultPhysicsMaterial: {fileID: 0}
-  exportType: 0
-  originType: 0
-  exportColliders: 0
-  exportPath: 
-  angleError: 1
-  areaError: 1
-  hardAngle: 60
-  packMargin: 20
-  scaleInLightmap: 1
-  autoUVMaxDistance: 0.5
-  autoUVMaxAngle: 89
-  minimumChartSize: 4
---- !u!4 &1772730092
-Transform:
-  m_ObjectHideFlags: 17
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772730089}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 394174522}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1775812269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72757,7 +72816,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -177.3, y: 1.65, z: -50.1}
-  m_LocalScale: {x: 30.73, y: 1, z: 20.91}
+  m_LocalScale: {x: 30.85, y: 1, z: 20.91}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 183988455}
@@ -74260,6 +74319,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -74332,7 +74392,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77740,6 +77800,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -77812,7 +77873,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77933,7 +77994,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 28626
+    surfaceParameter: 28076
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: -159679964117849719
@@ -78465,102 +78526,6 @@ MonoBehaviour:
     - EdgeIndices: 14000000150000001600000017000000
       TexGenIndex: 5
     Generation: 31
---- !u!1 &2046219378
-GameObject:
-  m_ObjectHideFlags: 17
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2046219381}
-  - component: {fileID: 2046219380}
-  - component: {fileID: 2046219379}
-  m_Layer: 0
-  m_Name: '[default-CSGModel]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 124
-  m_IsActive: 1
---- !u!54 &2046219379
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046219378}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!114 &2046219380
-MonoBehaviour:
-  m_ObjectHideFlags: 17
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046219378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8672dcc90e16b0a489a41edf56e016f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrefabBehaviour: 0
-  PrefabSourceAlignment: 4
-  PrefabDestinationAlignment: 0
-  Version: 1.1
-  infiniteBrush: {fileID: 0}
-  Settings: 1025
-  VertexChannels: 14
-  ReceiveGI: 2
-  MeshColliderCookingOptions: 14
-  ShowGeneratedMeshes: 0
-  DefaultPhysicsMaterial: {fileID: 0}
-  exportType: 0
-  originType: 0
-  exportColliders: 0
-  exportPath: 
-  angleError: 1
-  areaError: 1
-  hardAngle: 60
-  packMargin: 20
-  scaleInLightmap: 1
-  autoUVMaxDistance: 0.5
-  autoUVMaxAngle: 89
-  minimumChartSize: 4
---- !u!4 &2046219381
-Transform:
-  m_ObjectHideFlags: 17
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046219378}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 118234430}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2046683901
 GameObject:
   m_ObjectHideFlags: 0
@@ -79567,6 +79532,7 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -83129,6 +83095,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9046ccb460766442ac5b74f37ba6e59, type: 3}
+--- !u!1001 &7218218329944450608
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -70.852
+      objectReference: {fileID: 0}
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -56.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659199
+      objectReference: {fileID: 0}
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.25881752
+      objectReference: {fileID: 0}
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0033934184
+      objectReference: {fileID: 0}
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00090926397
+      objectReference: {fileID: 0}
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 29.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.465
+      objectReference: {fileID: 0}
+    - target: {fileID: 794482716129811044, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.232
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+      propertyPath: m_Name
+      value: HealthyHerb
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -83149,4 +83172,6 @@ SceneRoots:
   - {fileID: 524874892}
   - {fileID: 867681591}
   - {fileID: 192128841}
-  - {fileID: 1772730092}
+  - {fileID: 1411194032}
+  - {fileID: 1738672727}
+  - {fileID: 7218218329944450608}

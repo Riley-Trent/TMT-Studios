@@ -21,6 +21,8 @@ public class RedFox : MonoBehaviour
 
     public float moneyStolen;
 
+    [SerializeField] public GameObject HealthyHerb;
+
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -65,6 +67,7 @@ public class RedFox : MonoBehaviour
         {
             AttackPlayer();
         }
+
     }
 
     private void Patroling()
@@ -140,6 +143,7 @@ public class RedFox : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        Instantiate(HealthyHerb, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
