@@ -12,18 +12,22 @@ public class PlayerStats : MonoBehaviour
     public float money;
 
     public TextMeshProUGUI moneyText;
+
+    AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         moneyText.text = money.ToString() + " ¢";
         healthBar.SetSliderMax(maxHealth);
+        audio = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
         healthBar.SetSlider(health);
+        audio.Play();
     }
 
     public void HealDamage(float amount)

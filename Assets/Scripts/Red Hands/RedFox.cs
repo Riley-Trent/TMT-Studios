@@ -121,7 +121,7 @@ public class RedFox : MonoBehaviour
             moneyStolen += moneyStealAmount;
             alreadyAttacked = true;
             agent.SetDestination(retreatPoint.position);
-            Invoke(nameof(DestroyEnemy), 10f);
+            Invoke(nameof(DestroyEnemyNoPickup), 10f);
         }
     }
 
@@ -144,6 +144,11 @@ public class RedFox : MonoBehaviour
     private void DestroyEnemy()
     {
         Instantiate(HealthyHerb, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    private void DestroyEnemyNoPickup()
+    {
         Destroy(gameObject);
     }
 }
