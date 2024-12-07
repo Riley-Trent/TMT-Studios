@@ -6,6 +6,7 @@ public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private FPSController fPSController;
 
     public bool IsOpen { get; private set; }
     private ResponseHandler responseHandler;
@@ -24,6 +25,7 @@ public class DialogueUI : MonoBehaviour
         IsOpen = true;
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
+        fPSController.crossHair.SetActive(false);
     }
 
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
@@ -78,5 +80,6 @@ public class DialogueUI : MonoBehaviour
         IsOpen = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
+        fPSController.crossHair.SetActive(true);
     }
 }

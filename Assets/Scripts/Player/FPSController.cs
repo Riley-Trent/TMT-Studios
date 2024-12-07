@@ -30,6 +30,7 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float mouseYSensitivity = 2.0f;
     [SerializeField] private float upDownRange = 80.0f;
     [SerializeField] private float InteractRange = 80.0f;
+    [SerializeField] public GameObject crossHair;
 
     [Header("Misc")]
     [SerializeField] private float hideDelay = 1.0f;
@@ -96,8 +97,10 @@ public class FPSController : MonoBehaviour
         isScurrying = !isScurrying;
         if(isScurrying){
             SwitchToThirdPerson();
+            crossHair.SetActive(false);
         }else{
             SwitchToFirstPerson();
+            crossHair.SetActive(true);
         }
         animator.SetBool("IsScurrying", isScurrying);
     }
