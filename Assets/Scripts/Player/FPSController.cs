@@ -148,7 +148,7 @@ public class FPSController : MonoBehaviour
     }
     void Attack()
     {
-        if(GunSelector.ActiveGun != null){
+        if(isAttacking && GunSelector.ActiveGun != null){
             GunSelector.ActiveGun.Shoot();
         }
     }
