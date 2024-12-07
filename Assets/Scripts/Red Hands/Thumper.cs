@@ -22,7 +22,7 @@ public class Thumper : MonoBehaviour
     public float timeBetweenSlams = 5f; // Cooldown for Seismic Slam
     private bool alreadySlammed;
 
-    [SerializeField] public GameObject HealthyHerb;
+    [SerializeField] public GameObject HealthyHerb, FortressOfFur;
 
     // Patrolling
     public Vector3 walkPoint;
@@ -187,7 +187,20 @@ public class Thumper : MonoBehaviour
 
     private void DestroyEnemy()
     {
-        Instantiate(HealthyHerb, transform.position, Quaternion.identity);
+        float randValue = Random.value;
+        if(randValue <= 0.2f)
+        {
+            float randValue2 = Random.value;
+            if(randValue2 <= 0.5f)
+            {
+                Instantiate(HealthyHerb, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(FortressOfFur, transform.position, Quaternion.identity);
+            }
+        }
+        ResetPlayerStun();
         Destroy(gameObject);
     }
 }

@@ -21,7 +21,7 @@ public class RedFox : MonoBehaviour
 
     public float moneyStolen;
 
-    [SerializeField] public GameObject HealthyHerb;
+    [SerializeField] public GameObject HealthyHerb, FortressOfFur;
 
     //Patroling
     public Vector3 walkPoint;
@@ -34,7 +34,7 @@ public class RedFox : MonoBehaviour
 
     //States
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange, isAttacked;
 
     void Start()
     {
@@ -58,7 +58,7 @@ public class RedFox : MonoBehaviour
             Patroling();
         }
 
-        if(playerInSightRange && !playerInAttackRange && !alreadyAttacked)
+        if((playerInSightRange || isAttacked) && !playerInAttackRange && !alreadyAttacked)
         {
             ChasePlayer();
         }
@@ -146,18 +146,31 @@ public class RedFox : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        isAttacked = true;
         health -= damage;
 
         if(health <= 0)
         {
-            player.GetComponent<PlayerStats>().AddMoney(moneyStolen);
-            Invoke(nameof(DestroyEnemy), .5f);
+            Invoke(nameof(DestroyEnemy), .1f);
         }
     }
 
     private void DestroyEnemy()
     {
-        Instantiate(HealthyHerb, transform.position, Quaternion.identity);
+        float randValue = Random.value;
+        if(randValue <= 0.2f)
+        {
+            float randValue2 = Random.value;
+            if(randValue2 <= 0.5f)
+            {
+                Instantiate(HealthyHerb, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(FortressOfFur, transform.position, Quaternion.identity);
+            }
+        }
+        player.GetComponent<PlayerStats>().AddMoney(moneyStolen);
         Destroy(gameObject);
     }
 

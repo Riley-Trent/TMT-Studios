@@ -2956,7 +2956,8 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
-  HealthyHerb: {fileID: 88015511}
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -2964,6 +2965,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &88015513
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4669,6 +4671,63 @@ MonoBehaviour:
     - EdgeIndices: 14000000150000001600000017000000
       TexGenIndex: 5
     Generation: 64
+--- !u!1001 &121134442
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.759053
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5513825
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_Name
+      value: FortressOfFur (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
 --- !u!1001 &123763259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7513,6 +7572,7 @@ MonoBehaviour:
   stunDuration: 2
   timeBetweenSlams: 5
   HealthyHerb: {fileID: 1747250106}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   sightRange: 20
@@ -8010,7 +8070,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.6000001
+  m_Radius: 0.8000001
   m_Center: {x: 0.2, y: 0.4, z: -0.3}
 --- !u!1 &213324673
 GameObject:
@@ -14184,6 +14244,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -14191,6 +14252,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &368434375
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -17702,6 +17764,32 @@ MonoBehaviour:
     - EdgeIndices: 14000000150000001600000017000000
       TexGenIndex: 5
     Generation: 71
+--- !u!1 &518711703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013955223658, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+  m_PrefabInstance: {fileID: 889277049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &518711704
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518711703}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 4, z: 1}
+  m_Center: {x: 0, y: 1, z: 0.25}
 --- !u!1 &518914013
 GameObject:
   m_ObjectHideFlags: 0
@@ -18843,6 +18931,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -18850,6 +18939,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &533649679
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21051,7 +21141,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!1 &583397515
 GameObject:
-  m_ObjectHideFlags: 3
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -21068,7 +21158,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &583397516
 Transform:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -21086,7 +21176,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &583397517
 MonoBehaviour:
-  m_ObjectHideFlags: 27
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -23774,6 +23864,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -23781,6 +23872,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &639382656
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -25738,6 +25830,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -25745,6 +25838,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &699858963
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -26021,6 +26115,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -26028,6 +26123,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &702379963
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -26395,6 +26491,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -26402,6 +26499,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &720826575
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -27929,6 +28027,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -27936,6 +28035,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &763744433
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -30273,6 +30373,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -30280,6 +30381,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &820520690
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -32605,6 +32707,153 @@ MonoBehaviour:
     - EdgeIndices: 14000000150000001600000017000000
       TexGenIndex: 5
     Generation: 64
+--- !u!1 &864957470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 864957471}
+  - component: {fileID: 864957474}
+  - component: {fileID: 864957473}
+  - component: {fileID: 864957472}
+  m_Layer: 5
+  m_Name: Powerup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &864957471
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864957470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2075068695}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -960, y: -150.97998}
+  m_SizeDelta: {x: 763.8726, y: 100.65}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &864957472
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864957470}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &864957473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864957470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Fortress of Fur
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4292006610
+  m_fontColor: {r: 0.8238993, g: 0.8238993, b: 0.8238993, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 66
+  m_fontSizeBase: 66
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0.21998598, y: 0.00018310547, z: 0.140625, w: -0.27044678}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &864957474
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864957470}
+  m_CullTransparentMesh: 1
 --- !u!1001 &867681591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32709,6 +32958,10 @@ PrefabInstance:
       propertyPath: moneyText
       value: 
       objectReference: {fileID: 656730793}
+    - target: {fileID: 3360737012132132363, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: powerupUI
+      value: 
+      objectReference: {fileID: 864957470}
     - target: {fileID: 3360737012132132363, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
       propertyPath: hpGainText
       value: 
@@ -33480,6 +33733,102 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &889277049
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1000011259455100, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013210641910, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013210641910, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013955223658, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_Name
+      value: chainlink_single (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013955223658, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013955223658, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012015980754, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.126
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012015980754, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.146
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -96.693
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.005333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -180.439
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012378391202, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1000013955223658, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 518711704}
+  m_SourcePrefab: {fileID: 100100000, guid: ecc15abaa2d4963428bdf7fc9eb09410, type: 3}
 --- !u!1001 &891269762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34529,6 +34878,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -34536,6 +34886,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &917158823
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -38071,6 +38422,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -38078,6 +38430,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &962895164
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -39094,6 +39447,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -39101,6 +39455,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &989086842
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -39288,7 +39643,8 @@ MonoBehaviour:
   damage: 5
   moneyStealAmount: 10
   moneyStolen: 0
-  HealthyHerb: {fileID: 990704488}
+  HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -39296,6 +39652,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &990704490
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -42673,6 +43030,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -42680,6 +43038,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &1054044995
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -43749,6 +44108,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071723202}
   m_CullTransparentMesh: 1
+--- !u!1 &1077638119
+GameObject:
+  m_ObjectHideFlags: 17
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1077638121}
+  - component: {fileID: 1077638120}
+  m_Layer: 0
+  m_Name: '[default-CSGModel]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 124
+  m_IsActive: 1
+--- !u!114 &1077638120
+MonoBehaviour:
+  m_ObjectHideFlags: 17
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077638119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8672dcc90e16b0a489a41edf56e016f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 1.1
+  infiniteBrush: {fileID: 0}
+  Settings: 1025
+  VertexChannels: 14
+  ReceiveGI: 2
+  MeshColliderCookingOptions: 14
+  ShowGeneratedMeshes: 0
+  DefaultPhysicsMaterial: {fileID: 0}
+  exportType: 0
+  originType: 0
+  exportColliders: 0
+  exportPath: 
+  angleError: 1
+  areaError: 1
+  hardAngle: 60
+  packMargin: 20
+  scaleInLightmap: 1
+  autoUVMaxDistance: 0.5
+  autoUVMaxAngle: 89
+  minimumChartSize: 4
+--- !u!4 &1077638121
+Transform:
+  m_ObjectHideFlags: 17
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077638119}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1081728426
 GameObject:
   m_ObjectHideFlags: 0
@@ -45826,6 +46252,7 @@ MonoBehaviour:
   stunDuration: 2
   timeBetweenSlams: 5
   HealthyHerb: {fileID: 1747250106}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   sightRange: 20
@@ -46296,7 +46723,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!1 &1113703510
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -46315,7 +46742,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1113703511
 Transform:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -46330,7 +46757,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1113703512
 MeshRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -46372,7 +46799,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1113703513
 MeshFilter:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -46978,6 +47405,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -46985,6 +47413,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &1124464056
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -48983,6 +49412,10 @@ PrefabInstance:
       propertyPath: grinRange
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3334485350409068577, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+      propertyPath: FortressOfFur
+      value: 
+      objectReference: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
     - target: {fileID: 4991478815888286361, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_Name
       value: Devil (1)
@@ -49639,7 +50072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473bcef8e34ede64c94d2a15e1ec42c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 1148795846}
+  objectToSpawn: {fileID: 518711703}
 --- !u!65 &1178895151
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53581,6 +54014,10 @@ PrefabInstance:
       propertyPath: grinRange
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3334485350409068577, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+      propertyPath: FortressOfFur
+      value: 
+      objectReference: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
     - target: {fileID: 4991478815888286361, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_Name
       value: Devil
@@ -56813,6 +57250,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -56820,6 +57258,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &1400684738
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -58780,6 +59219,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -58787,6 +59227,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &1438303541
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -59456,6 +59897,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8eb45922989ef4758add4dfda9b3d6b6, type: 3}
   m_PrefabInstance: {fileID: 476296002}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1454387031
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.371538
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 49.664093
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_Name
+      value: FortressOfFur (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
 --- !u!1 &1456697515
 GameObject:
   m_ObjectHideFlags: 0
@@ -59765,7 +60263,7 @@ MonoBehaviour:
     Generation: 31
 --- !u!1 &1463114688
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -59783,7 +60281,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1463114689
 Transform:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -59798,7 +60296,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1463114690
 MeshCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -62106,7 +62604,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.6000001
+  m_Radius: 0.8000001
   m_Center: {x: 0.2, y: 0.4, z: -0.3}
 --- !u!43 &1549258816
 Mesh:
@@ -68089,7 +68587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -112.46106, y: -150.97998}
+  m_AnchoredPosition: {x: -112.46118, y: -150.97998}
   m_SizeDelta: {x: 224.9218, y: 100.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724274809
@@ -69491,6 +69989,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -69498,6 +69997,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &1758737056
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -76538,6 +77038,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
@@ -76545,6 +77046,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &1957502371
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -80019,6 +80521,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -80026,6 +80529,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &2028526758
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -81751,6 +82255,7 @@ MonoBehaviour:
   moneyStealAmount: 10
   moneyStolen: 0
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   timeBetweenAttacks: 1
@@ -81758,6 +82263,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAttacked: 0
 --- !u!195 &2069398934
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -81823,7 +82329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82168,6 +82674,7 @@ RectTransform:
   - {fileID: 656730792}
   - {fileID: 894459134}
   - {fileID: 1724274808}
+  - {fileID: 864957471}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -84411,6 +84918,10 @@ PrefabInstance:
       propertyPath: grinRange
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3334485350409068577, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+      propertyPath: FortressOfFur
+      value: 
+      objectReference: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
     - target: {fileID: 4991478815888286361, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_Name
       value: Devil
@@ -85181,6 +85692,7 @@ MonoBehaviour:
   stunDuration: 2
   timeBetweenSlams: 5
   HealthyHerb: {fileID: 1747250106}
+  FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   sightRange: 20
@@ -85613,6 +86125,63 @@ MonoBehaviour:
     - EdgeIndices: 14000000150000001600000017000000
       TexGenIndex: 5
     Generation: 64
+--- !u!1001 &1720950085478996492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -99.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -180.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889088531534062401, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
+      propertyPath: m_Name
+      value: FortressOfFur
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
 --- !u!1001 &2188310229793150598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85818,6 +86387,10 @@ PrefabInstance:
       propertyPath: grinRange
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3334485350409068577, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+      propertyPath: FortressOfFur
+      value: 
+      objectReference: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
     - target: {fileID: 4991478815888286361, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_Name
       value: Devil
