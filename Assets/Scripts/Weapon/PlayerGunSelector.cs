@@ -6,6 +6,7 @@ public class PlayerGunSelector : MonoBehaviour
 {
     [SerializeField] private GunType Gun;
     [SerializeField] private Transform GunParent;
+    [SerializeField] private Transform GunTip;
     [SerializeField] private GameObject CameraView;
     [SerializeField] private List<GunScriptableObject> Guns;
     //[SerializeField] private PlayerIk InverseKinematics;
@@ -26,6 +27,7 @@ public class PlayerGunSelector : MonoBehaviour
         gun.Spawn(GunParent, this);
         
         gun.CameraPos = CameraView;
+        gun.GunTip = GunTip;
         
     }
 }

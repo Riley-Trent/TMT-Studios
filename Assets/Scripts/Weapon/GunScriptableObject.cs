@@ -15,7 +15,8 @@ public class GunScriptableObject : ScriptableObject
 
     public ShootConfigurationScriptableObject ShootConfig;
     public TrailConfigurationSriptableObject TrailConfig;
-    public Vector3 GunTip;
+    public DamageConfigScriptableObject DamageConfig;
+    public Transform GunTip;
     public GameObject CameraPos;
 
     private MonoBehaviour ActiveMonoBehaviour;
@@ -54,7 +55,7 @@ public class GunScriptableObject : ScriptableObject
                     float.MaxValue,
                     ShootConfig.HitMask
             )){
-                ActiveMonoBehaviour.StartCoroutine(PlayTrail(Model.transform.position + GunTip, hit.point, hit));
+                ActiveMonoBehaviour.StartCoroutine(PlayTrail(GunTip.transform.position, hit.point, hit));
                 if(hit.collider.gameObject.tag == ("Enemy"))
                 {
                     if(hit.collider.gameObject.TryGetComponent<RedFox>(out RedFox redFox))
@@ -77,8 +78,8 @@ public class GunScriptableObject : ScriptableObject
 
             } else {
                 ActiveMonoBehaviour.StartCoroutine(PlayTrail(
-                    Model.transform.position + GunTip,
-                    Model.transform.position + GunTip + (shootDirection * TrailConfig.MissDistance),
+                    GunTip.transform.position,
+                    GunTip.transform.position + (shootDirection * TrailConfig.MissDistance),
                     new RaycastHit()
                 ));
             }
@@ -106,6 +107,9 @@ public class GunScriptableObject : ScriptableObject
 
         if (Hit.collider != null){
             //SurfaceManager.Instance.HandleImpact(Hit.transform.gameObject, EndPoint, Hit.normal, ImpactType, 0);
+            if(Hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable)){
+                damageable.TakeDamage(DamageConfig.GetDamage());
+            }
         }
 
         yield return new WaitForSeconds(TrailConfig.Duration);

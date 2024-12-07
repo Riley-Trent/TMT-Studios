@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class RedFox : MonoBehaviour
 {
+    
+
     public NavMeshAgent agent;
 
     public Transform player;
@@ -35,6 +37,8 @@ public class RedFox : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange, isAttacked;
+
+    
 
     void Start()
     {
@@ -177,5 +181,10 @@ public class RedFox : MonoBehaviour
     private void DestroyEnemyNoPickup()
     {
         Destroy(gameObject);
+    }
+
+    public void TakeDamage(int Damage)
+    {
+        throw new System.NotImplementedException();
     }
 }
