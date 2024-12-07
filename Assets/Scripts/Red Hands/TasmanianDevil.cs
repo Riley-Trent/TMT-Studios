@@ -15,7 +15,7 @@ public class TasmanianDevil : MonoBehaviour
 
     public float damage = 5f;
 
-    [SerializeField] public GameObject HealthyHerb;
+    [SerializeField] public GameObject HealthyHerb, FortressOfFur;
 
     public Camera camera;
     MeshRenderer renderer;
@@ -42,7 +42,7 @@ public class TasmanianDevil : MonoBehaviour
 
     //States
     public float sightRange, attackRange, grinRange;
-    public bool playerInSightRange, playerInAttackRange, playerInGrinRange;
+    public bool playerInSightRange, playerInAttackRange, playerInGrinRange, isAttacked;
 
     void Start()
     {
@@ -70,7 +70,7 @@ public class TasmanianDevil : MonoBehaviour
             Patroling();
         }
 
-        if(playerInSightRange && !playerInAttackRange && !alreadyAttacked)
+        if((playerInSightRange || isAttacked) && !playerInAttackRange && !alreadyAttacked)
         {
             ChasePlayer();
         }
@@ -189,17 +189,31 @@ public class TasmanianDevil : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        isAttacked = true;
         health -= damage;
 
         if(health <= 0)
         {
-            Invoke(nameof(DestroyEnemy), .5f);
+            Invoke(nameof(DestroyEnemy), .1f);
         }
     }
 
     private void DestroyEnemy()
     {
-        Instantiate(HealthyHerb, transform.position, Quaternion.identity);
+        float randValue = Random.value;
+        if(randValue <= 0.2f)
+        {
+            float randValue2 = Random.value;
+            if(randValue2 <= 0.5f)
+            {
+                Instantiate(HealthyHerb, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(FortressOfFur, transform.position, Quaternion.identity);
+            }
+        }
+        ResetStun();
         Destroy(gameObject);
     }
 }

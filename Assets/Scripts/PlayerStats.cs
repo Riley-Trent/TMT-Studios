@@ -9,13 +9,17 @@ public class PlayerStats : MonoBehaviour
     public HealthBar healthBar;
     [SerializeField] public float maxHealth;
 
-    [SerializeField] public GameObject hpLostUI, moneyLostUI;
+    [SerializeField] public GameObject hpLostUI, moneyLostUI, powerupUI;
     private float health;
 
     public float money;
 
     public TextMeshProUGUI moneyText, moneyLostText, hpGainText;
     private FPSController fpsController;
+
+    public bool fortressOfFur, fortressOfFurActive;
+
+    public float powerupTimer;
 
     AudioSource audio;
     // Start is called before the first frame update
@@ -26,17 +30,25 @@ public class PlayerStats : MonoBehaviour
         healthBar.SetSliderMax(maxHealth);
         audio = GetComponent<AudioSource>();
         fpsController = GetComponent<FPSController>();
+        powerupTimer = 0f;
     }
 
     public void TakeDamage(float amount)
     {
-        health -= amount;
-        healthBar.SetSlider(health);
-        hpGainText.text = "- " + amount.ToString() + " HP";
-        hpLostUI.GetComponent<CanvasRenderer>().SetAlpha(1f);
-        hpLostUI.GetComponent<TextMeshProUGUI>().color = Color.red;
-        audio.Play();
-        hpLostUI.GetComponent<Graphic>().CrossFadeAlpha(0f, 2f, false);
+        if(fortressOfFur)
+        {
+            amount /= 2.0f;
+        }
+        if(amount > 0)
+        {
+            health -= amount;
+            healthBar.SetSlider(health);
+            hpGainText.text = "- " + amount.ToString() + " HP";
+            hpLostUI.GetComponent<CanvasRenderer>().SetAlpha(1f);
+            hpLostUI.GetComponent<TextMeshProUGUI>().color = Color.red;
+            audio.Play();
+            hpLostUI.GetComponent<Graphic>().CrossFadeAlpha(0f, 2f, false);
+        }
     }
 
     public void HealDamage(float amount)
@@ -64,12 +76,16 @@ public class PlayerStats : MonoBehaviour
 
     public void AddMoney(float amount)
     {
-        money += amount;
-        moneyLostUI.GetComponent<CanvasRenderer>().SetAlpha(1f);
-        moneyLostUI.GetComponent<TextMeshProUGUI>().color = Color.green;
-        moneyLostText.text = "+ " + amount.ToString() + " ¢";
-        moneyText.text = money.ToString() + " ¢";
-        moneyLostUI.GetComponent<Graphic>().CrossFadeAlpha(0f, 2f, false);
+        if(amount > 0)
+        {
+            money += amount;
+            moneyLostUI.GetComponent<CanvasRenderer>().SetAlpha(1f);
+            moneyLostUI.GetComponent<TextMeshProUGUI>().color = Color.green;
+            moneyLostText.text = "+ " + amount.ToString() + " ¢";
+            moneyText.text = money.ToString() + " ¢";
+            moneyLostUI.GetComponent<Graphic>().CrossFadeAlpha(0f, 2f, false);
+        }
+
     }
     public void ApplyStun(float duration)
     {
@@ -101,6 +117,29 @@ public class PlayerStats : MonoBehaviour
         {
             money = 0f;
         }
+
+        if(fortressOfFur && !fortressOfFurActive)
+        {
+            fortressOfFurActive = true;
+            powerupUI.SetActive(true);
+        }
+
+        if(fortressOfFurActive)
+        {
+            powerupTimer -= Time.deltaTime;
+            if(powerupTimer <= 0f)
+            {
+                RemoveFortressOfFur();
+            }
+        }
+    }
+
+    public void RemoveFortressOfFur()
+    {
+        fortressOfFur = false;
+        fortressOfFurActive = false;
+        powerupUI.SetActive(false);
+        powerupTimer = 0f;
     }
 
 }

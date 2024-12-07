@@ -145,6 +145,7 @@ public class Tiger : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        isEncountered = true;
         health -= damage;
         healthBar.SetSlider(health);
     }
