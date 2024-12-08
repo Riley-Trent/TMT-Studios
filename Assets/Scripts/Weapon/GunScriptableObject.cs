@@ -74,6 +74,10 @@ public class GunScriptableObject : ScriptableObject
                     {
                         tiger.TakeDamage(10);
                     }
+                    if (hit.collider.gameObject.TryGetComponent<Hyena>(out Hyena hyena))
+                    {
+                        hyena.TakeDamage(10);
+                    }
                 }
 
             } else {
