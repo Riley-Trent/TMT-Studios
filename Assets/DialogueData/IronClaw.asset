@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5f5a88ef26db744a18ac4e0b2002b9, type: 3}
   m_Name: IronClaw
   m_EditorClassIdentifier: 
-  dialogue: []
+  dialogue:
+  - Ironclaw... so they finally put a face to the whispers. The 'Ghost of Broken
+    Hill,' they call him. Fast, ruthless, and always one step ahead. But even a ghost
+    can bleed.
+  - "Five million. Guess the city\u2019s willing to pay a fortune to clean its hands
+    of him. Too bad they\u2019ll never see it spent. This isn't about money for me."
+  - "Hah. A message? Or a warning? Either way, I\u2019m coming for you, Ironclaw.
+    Let\u2019s see how your claws match up against mine."
   responses: []

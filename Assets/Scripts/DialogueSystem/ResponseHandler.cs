@@ -15,6 +15,7 @@ public class ResponseHandler : MonoBehaviour
     private void Start()
     {
         dialogueUI = GetComponent<DialogueUI>();
+        responseButtonTemplate.gameObject.SetActive(false);
     }
 
     public void ShowResponses(Response[] responses)

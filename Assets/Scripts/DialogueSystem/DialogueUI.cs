@@ -26,6 +26,7 @@ public class DialogueUI : MonoBehaviour
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
         fPSController.crossHair.SetActive(false);
+        //responseHandler.responseButtonTemplate.gameObject.SetActive(false);
     }
 
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
