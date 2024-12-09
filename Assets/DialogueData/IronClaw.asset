@@ -20,4 +20,9 @@ MonoBehaviour:
     of him. Too bad they\u2019ll never see it spent. This isn't about money for me."
   - "Hah. A message? Or a warning? Either way, I\u2019m coming for you, Ironclaw.
     Let\u2019s see how your claws match up against mine."
-  responses: []
+  - Question remains, should I hunt Ironclaw now or should I chill?
+  responses:
+  - responseText: Hunt
+    dialogueObject: {fileID: 11400000, guid: 22c3a4a72d7a85541b9ec221e799392d, type: 2}
+  - responseText: Chill
+    dialogueObject: {fileID: 11400000, guid: ddf6b3a8e46fb1f40a4dc73e15fe8cf2, type: 2}

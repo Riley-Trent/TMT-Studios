@@ -26,7 +26,11 @@ public class DialogueUI : MonoBehaviour
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
         fPSController.crossHair.SetActive(false);
-        //responseHandler.responseButtonTemplate.gameObject.SetActive(false);
+    }
+
+    public void AddResponseEvents(ResponseEvent[] responseEvents)
+    {
+        responseHandler.AddResponseEvents(responseEvents);
     }
 
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
@@ -76,7 +80,7 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
-    private void CloseDialogueBox()
+    public void CloseDialogueBox()
     {
         IsOpen = false;
         dialogueBox.SetActive(false);
