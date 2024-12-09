@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float maxHealth;
 
     [SerializeField] public GameObject hpLostUI, moneyLostUI, powerupUI;
+    [SerializeField] private GameManager gameManager;
     private float health;
 
     public float money;
@@ -20,6 +21,7 @@ public class PlayerStats : MonoBehaviour
     public bool fortressOfFur, fortressOfFurActive;
 
     public float powerupTimer;
+    private bool isDead;
 
     AudioSource audio;
     // Start is called before the first frame update
@@ -111,6 +113,12 @@ public class PlayerStats : MonoBehaviour
         if (health > maxHealth)
         {
             health = maxHealth;
+        }
+        if (health <= 0 && !isDead)
+        {
+            gameObject.SetActive(false);
+            isDead = true;
+            gameManager.gameOver();
         }
 
         if (money < 0f)

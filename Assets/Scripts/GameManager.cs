@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private InputReader input;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverUI;
 
 
     private void Start(){
@@ -33,5 +35,26 @@ public class GameManager : MonoBehaviour
     private void CursorOn(){
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public void gameOver()
+    {
+        gameOverUI.SetActive(true);
+        CursorOn();
+    }
+    
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void mainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void hubWorld()
+    {
+        SceneManager.LoadScene("HubWorld");
     }
 }
