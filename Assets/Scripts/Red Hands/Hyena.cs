@@ -1,4 +1,6 @@
 using System.Collections;
+using DG.Tweening;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,11 +13,11 @@ public class Hyena : MonoBehaviour
 
     public HealthBar healthBar;
 
-    public Transform player;
+    public Transform player, hyenaBulletPosition;
 
     public LayerMask setGround, setPlayer;
 
-    [SerializeField] public GameObject hyena1, hyena2, jumpPoint;
+    [SerializeField] public GameObject hyena1, hyena2, jumpPoint, hyenaBullet;
 
     public float health, speed;
 
@@ -34,7 +36,7 @@ public class Hyena : MonoBehaviour
 
     //States
     public float sightRange, attackRange, inverseRange;
-    public bool playerInSightRange, playerInAttackRange, isAttacked, playerInInverseRange, isDead, isRessurecting, preparingBulletBarrage;
+    public bool playerInSightRange, playerInAttackRange, isAttacked, playerInInverseRange, isDead, isRessurecting, preparingBulletBarrage, canAttack;
 
     public MeshRenderer rend;
     AudioSource audio;
@@ -71,7 +73,7 @@ public class Hyena : MonoBehaviour
             ChasePlayer();
         }
 
-        if(playerInSightRange && playerInAttackRange && !alreadyAttacked && !isDead)
+        if(playerInSightRange && playerInAttackRange && !alreadyAttacked && !isDead && canAttack)
         {
             AttackPlayer();
         }
@@ -81,10 +83,13 @@ public class Hyena : MonoBehaviour
             health = 0f;
             rend.material.SetColor("_Color", new Vector4(1, 0, 0, 1));
             isDead = true;
+            canAttack = false;
+            agent.speed = 0f;
         }
         else
         {
             rend.material.SetColor("_Color", new Vector4(0, 1, 0, 1));
+            canAttack = true;
         }
 
         if(((hyena1.GetComponent<Hyena>().isDead == true) || (hyena2.GetComponent<Hyena>().isDead == true)) && !isDead && !isRessurecting)
@@ -188,6 +193,7 @@ public class Hyena : MonoBehaviour
                 hyena1.GetComponent<Hyena>().health += (hyena1.GetComponent<Hyena>().maxHealth / 3.0f);
                 hyena1.GetComponent<Hyena>().isDead = false;
                 hyena1.GetComponent<Hyena>().healthBar.SetSlider(hyena1.GetComponent<Hyena>().health);
+                hyena1.GetComponent<Hyena>().agent.speed = speed;
 
             }
             if(hyena2.GetComponent<Hyena>().isDead == true)
@@ -195,6 +201,7 @@ public class Hyena : MonoBehaviour
                 hyena2.GetComponent<Hyena>().health += (hyena2.GetComponent<Hyena>().maxHealth / 3.0f);
                 hyena2.GetComponent<Hyena>().isDead = false;
                 hyena2.GetComponent<Hyena>().healthBar.SetSlider(hyena2.GetComponent<Hyena>().health);
+                hyena2.GetComponent<Hyena>().agent.speed = speed;
             }
         }
 
@@ -203,13 +210,26 @@ public class Hyena : MonoBehaviour
 
     IEnumerator HyenaBulletBarrage()
     {
+        preparingBulletBarrage = true;
         yield return new WaitForSeconds(20);
 
         if(!isDead)
         {
             agent.speed = 0f;
-            
+            transform.DOMove(jumpPoint.transform.position, 1f);
+            yield return new WaitForSeconds(1);
+            for(int i = 0; i < 12; i++)
+            {
+                if(!isDead)
+                {
+                    transform.LookAt(player);
+                    Instantiate(hyenaBullet, hyenaBulletPosition.position, Quaternion.identity);
+                    yield return new WaitForSeconds(0.5f);
+                }
+            }
+            agent.speed = speed;
         }
+        preparingBulletBarrage = false;
     }
 
     private void DestroyEnemy()

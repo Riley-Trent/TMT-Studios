@@ -122,6 +122,73 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &109598954
+GameObject:
+  m_ObjectHideFlags: 17
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 109598956}
+  - component: {fileID: 109598955}
+  m_Layer: 0
+  m_Name: '[default-CSGModel]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 124
+  m_IsActive: 1
+--- !u!114 &109598955
+MonoBehaviour:
+  m_ObjectHideFlags: 17
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109598954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8672dcc90e16b0a489a41edf56e016f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 1.1
+  infiniteBrush: {fileID: 0}
+  Settings: 1025
+  VertexChannels: 14
+  ReceiveGI: 2
+  MeshColliderCookingOptions: 14
+  ShowGeneratedMeshes: 0
+  DefaultPhysicsMaterial: {fileID: 0}
+  exportType: 0
+  originType: 0
+  exportColliders: 0
+  exportPath: 
+  angleError: 1
+  areaError: 1
+  hardAngle: 60
+  packMargin: 20
+  scaleInLightmap: 1
+  autoUVMaxDistance: 0.5
+  autoUVMaxAngle: 89
+  minimumChartSize: 4
+--- !u!4 &109598956
+Transform:
+  m_ObjectHideFlags: 17
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109598954}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &173054030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8619872867445787734, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
@@ -573,6 +640,7 @@ MonoBehaviour:
   agent: {fileID: 346849384}
   healthBar: {fileID: 387815244}
   player: {fileID: 173054030}
+  hyenaBulletPosition: {fileID: 346849392}
   setGround:
     serializedVersion: 2
     m_Bits: 64
@@ -582,6 +650,7 @@ MonoBehaviour:
   hyena1: {fileID: 1688602207}
   hyena2: {fileID: 1296004766}
   jumpPoint: {fileID: 464392883}
+  hyenaBullet: {fileID: 2572167851111520879, guid: f9f2ac3a5471ebe49a1a2525ce315523, type: 3}
   health: 600
   speed: 0
   damage: 10
@@ -598,6 +667,7 @@ MonoBehaviour:
   isDead: 0
   isRessurecting: 0
   preparingBulletBarrage: 0
+  canAttack: 0
   rend: {fileID: 346849386}
 --- !u!195 &346849384 stripped
 NavMeshAgent:
@@ -705,6 +775,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &346849392 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1989031478895434324, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+  m_PrefabInstance: {fileID: 2081514054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &369625627
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +984,7 @@ Transform:
   m_GameObject: {fileID: 464392883}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.102, y: 0.176, z: -9.93}
+  m_LocalPosition: {x: 12.102, y: 1, z: -9.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1222,6 +1297,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1088622983402537809, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691946096238589809, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: Gun
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691946096238589809, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3360737012132132363, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
       propertyPath: hpLostUI
       value: 
@@ -1230,6 +1317,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1672878719}
+    - target: {fileID: 3360737012132132363, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3360737012132132363, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
       propertyPath: moneyText
       value: 
@@ -1250,6 +1341,14 @@ PrefabInstance:
       propertyPath: moneyLostText
       value: 
       objectReference: {fileID: 1585873499}
+    - target: {fileID: 5060498154374229232, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679923855135879639, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8619872867445787734, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 48.257156
@@ -1289,6 +1388,10 @@ PrefabInstance:
     - target: {fileID: 8619872867445787734, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964984684070191237, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8994849675086534380, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
       propertyPath: m_Name
@@ -1625,53 +1728,6 @@ MonoBehaviour:
   HasGeneratedNormals: 0
   HasUV2: 0
   LightingHashValue: 5341370685790458580
---- !u!1 &837593255
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 837593256}
-  - component: {fileID: 837593257}
-  m_Layer: 0
-  m_Name: '[generated-meshes]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &837593256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837593255}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1093910362}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &837593257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837593255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3643d4978096d4880d7edbf4f65a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Version: 1
-  owner: {fileID: 1093910361}
-  helperSurfaces: []
 --- !u!1001 &947660499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1683,6 +1739,10 @@ PrefabInstance:
     - target: {fileID: 314187132497246683, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_Speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 314187132497246683, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+      propertyPath: m_Radius
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1989031478895434324, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1778,7 +1838,7 @@ Transform:
   m_GameObject: {fileID: 1035271777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.006, y: 0.176, z: 9.011}
+  m_LocalPosition: {x: 50.006, y: 1, z: 9.011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1795,6 +1855,10 @@ PrefabInstance:
     - target: {fileID: 314187132497246683, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_Speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 314187132497246683, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+      propertyPath: m_Radius
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1989031478895434324, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1860,102 +1924,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1688602214}
   m_SourcePrefab: {fileID: 100100000, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
---- !u!1 &1093910359
-GameObject:
-  m_ObjectHideFlags: 17
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1093910362}
-  - component: {fileID: 1093910361}
-  - component: {fileID: 1093910360}
-  m_Layer: 0
-  m_Name: '[default-CSGModel]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 124
-  m_IsActive: 1
---- !u!54 &1093910360
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093910359}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!114 &1093910361
-MonoBehaviour:
-  m_ObjectHideFlags: 17
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093910359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8672dcc90e16b0a489a41edf56e016f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrefabBehaviour: 0
-  PrefabSourceAlignment: 4
-  PrefabDestinationAlignment: 0
-  Version: 1.1
-  infiniteBrush: {fileID: 0}
-  Settings: 1025
-  VertexChannels: 14
-  ReceiveGI: 2
-  MeshColliderCookingOptions: 14
-  ShowGeneratedMeshes: 0
-  DefaultPhysicsMaterial: {fileID: 0}
-  exportType: 0
-  originType: 0
-  exportColliders: 0
-  exportPath: 
-  angleError: 1
-  areaError: 1
-  hardAngle: 60
-  packMargin: 20
-  scaleInLightmap: 1
-  autoUVMaxDistance: 0.5
-  autoUVMaxAngle: 89
-  minimumChartSize: 4
---- !u!4 &1093910362
-Transform:
-  m_ObjectHideFlags: 17
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093910359}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 837593256}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1163676975
 Mesh:
   m_ObjectHideFlags: 16
@@ -2434,6 +2402,7 @@ MonoBehaviour:
   agent: {fileID: 1296004768}
   healthBar: {fileID: 1842634830}
   player: {fileID: 173054030}
+  hyenaBulletPosition: {fileID: 1296004776}
   setGround:
     serializedVersion: 2
     m_Bits: 64
@@ -2443,6 +2412,7 @@ MonoBehaviour:
   hyena1: {fileID: 346849382}
   hyena2: {fileID: 1688602207}
   jumpPoint: {fileID: 1035271777}
+  hyenaBullet: {fileID: 2572167851111520879, guid: f9f2ac3a5471ebe49a1a2525ce315523, type: 3}
   health: 600
   speed: 0
   damage: 10
@@ -2459,6 +2429,7 @@ MonoBehaviour:
   isDead: 0
   isRessurecting: 0
   preparingBulletBarrage: 0
+  canAttack: 0
   rend: {fileID: 1296004770}
 --- !u!195 &1296004768 stripped
 NavMeshAgent:
@@ -2566,6 +2537,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &1296004776 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1989031478895434324, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+  m_PrefabInstance: {fileID: 947660499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1298777543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,7 +2899,7 @@ Transform:
   m_GameObject: {fileID: 1504346416}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.006, y: 0.176, z: -28.903}
+  m_LocalPosition: {x: 50.006, y: 1, z: -28.903}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3381,6 +3357,7 @@ MonoBehaviour:
   agent: {fileID: 1688602209}
   healthBar: {fileID: 1774474166}
   player: {fileID: 173054030}
+  hyenaBulletPosition: {fileID: 1688602217}
   setGround:
     serializedVersion: 2
     m_Bits: 64
@@ -3390,6 +3367,7 @@ MonoBehaviour:
   hyena1: {fileID: 1296004766}
   hyena2: {fileID: 346849382}
   jumpPoint: {fileID: 1504346416}
+  hyenaBullet: {fileID: 2572167851111520879, guid: f9f2ac3a5471ebe49a1a2525ce315523, type: 3}
   health: 600
   speed: 0
   damage: 10
@@ -3406,6 +3384,7 @@ MonoBehaviour:
   isDead: 0
   isRessurecting: 0
   preparingBulletBarrage: 0
+  canAttack: 0
   rend: {fileID: 1688602211}
 --- !u!195 &1688602209 stripped
 NavMeshAgent:
@@ -3513,6 +3492,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &1688602217 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1989031478895434324, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+  m_PrefabInstance: {fileID: 1086136767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1774474166 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5592475553776261929, guid: 156be6a5edc2755498cf01f79503f6a0, type: 3}
@@ -3733,7 +3717,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 28836
+    surfaceParameter: 28170
     meshQueryIndex: 0
     subMeshQueryIndex: 0
     geometryHashValue: 5341370685790458580
@@ -3754,6 +3738,10 @@ PrefabInstance:
     - target: {fileID: 314187132497246683, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_Speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 314187132497246683, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
+      propertyPath: m_Radius
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1989031478895434324, guid: f8a02fc5a7feae74d83ccf12b6ac7669, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3992,7 +3980,6 @@ SceneRoots:
   - {fileID: 621961900}
   - {fileID: 1672878715}
   - {fileID: 1226890076}
-  - {fileID: 1093910362}
   - {fileID: 1086136767}
   - {fileID: 947660499}
   - {fileID: 2081514054}
@@ -4000,3 +3987,4 @@ SceneRoots:
   - {fileID: 1504346417}
   - {fileID: 1035271778}
   - {fileID: 464392884}
+  - {fileID: 109598956}
