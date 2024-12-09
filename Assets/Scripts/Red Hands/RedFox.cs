@@ -38,6 +38,8 @@ public class RedFox : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange, isAttacked;
 
+    private int expAmount = 100;
+
     
 
     void Start()
@@ -161,6 +163,7 @@ public class RedFox : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        ExperienceManager.Instance.AddExperience(expAmount);
         float randValue = Random.value;
         if(randValue <= 0.2f)
         {

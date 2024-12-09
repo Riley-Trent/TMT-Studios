@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
     public HealthBar healthBar;
+    public ExperienceBar experienceBar;
     [SerializeField] public float maxHealth;
+    [SerializeField] public int currentExperience, maxExperience, currentLevel;
 
     [SerializeField] public GameObject hpLostUI, moneyLostUI, powerupUI;
+    [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] private GameManager gameManager;
     private float health;
 
@@ -30,9 +33,20 @@ public class PlayerStats : MonoBehaviour
         health = maxHealth;
         moneyText.text = money.ToString() + " ¢";
         healthBar.SetSliderMax(maxHealth);
+        experienceBar.SetSliderMax(maxExperience);
         audio = GetComponent<AudioSource>();
         fpsController = GetComponent<FPSController>();
         powerupTimer = 0f;
+    }
+
+    private void OnEnable()
+    {
+        ExperienceManager.Instance.OnExperienceChange += HandleExperienceChange;
+    }
+
+    private void OnDisable()
+    {
+        ExperienceManager.Instance.OnExperienceChange -= HandleExperienceChange;
     }
 
     public void TakeDamage(float amount)
@@ -51,6 +65,29 @@ public class PlayerStats : MonoBehaviour
             audio.Play();
             hpLostUI.GetComponent<Graphic>().CrossFadeAlpha(0f, 2f, false);
         }
+    }
+
+    private void HandleExperienceChange(int newExperience)
+    {
+        currentExperience += newExperience;
+        experienceBar.SetSlider(currentExperience);
+        if(currentExperience >= maxExperience)
+        {
+            LevelUp();
+        }
+    }
+
+    private void LevelUp()
+    {
+        maxHealth +=10;
+
+        currentLevel++;
+        levelText.text = currentLevel.ToString();
+
+        currentExperience = 0;
+        maxExperience += 100;
+        experienceBar.SetSliderMax(maxExperience);
+        experienceBar.SetSlider(currentExperience);
     }
 
     public void HealDamage(float amount)
@@ -125,6 +162,7 @@ public class PlayerStats : MonoBehaviour
         {
             money = 0f;
         }
+    
 
         if(fortressOfFur && !fortressOfFurActive)
         {

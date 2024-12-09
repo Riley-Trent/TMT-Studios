@@ -43,6 +43,7 @@ public class TasmanianDevil : MonoBehaviour
     //States
     public float sightRange, attackRange, grinRange;
     public bool playerInSightRange, playerInAttackRange, playerInGrinRange, isAttacked;
+    private int expAmount = 100;
 
     void Start()
     {
@@ -200,6 +201,7 @@ public class TasmanianDevil : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        ExperienceManager.Instance.AddExperience(expAmount);
         float randValue = Random.value;
         if(randValue <= 0.2f)
         {

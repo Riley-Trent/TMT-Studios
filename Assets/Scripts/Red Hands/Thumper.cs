@@ -14,12 +14,12 @@ public class Thumper : MonoBehaviour
     public float health;
     public float damage = 10f;
 
-    public float slamRadius = 5f; // Radius of the seismic slam effect
-    public float slamHeight = 10f; // Height of the jump
-    public float slamDuration = 1f; // Total time for the jump (up and down)
-    public float stunDuration = 2f; // Duration of player's stun
+    public float slamRadius = 5f;
+    public float slamHeight = 10f;
+    public float slamDuration = 1f;
+    public float stunDuration = 2f;
 
-    public float timeBetweenSlams = 5f; // Cooldown for Seismic Slam
+    public float timeBetweenSlams = 5f;
     private bool alreadySlammed;
 
     [SerializeField] public GameObject HealthyHerb, FortressOfFur;
@@ -32,6 +32,7 @@ public class Thumper : MonoBehaviour
     // States
     public float sightRange;
     public bool playerInSightRange;
+    private int expAmount = 100;
 
     private void Awake()
     {
@@ -187,6 +188,7 @@ public class Thumper : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        ExperienceManager.Instance.AddExperience(expAmount);
         float randValue = Random.value;
         if(randValue <= 0.2f)
         {
