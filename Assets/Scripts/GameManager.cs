@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InputReader input;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private Tiger tiger;
+    [SerializeField] private GameObject hubPortal;
 
 
     private void Start(){
@@ -16,6 +18,14 @@ public class GameManager : MonoBehaviour
         input.ResumeEvent += HandleResume;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    private void Update()
+    {
+        if(tiger.isDead)
+        {
+            playerWin();
+        }
     }
 
     private void HandlePause(){
@@ -56,5 +66,10 @@ public class GameManager : MonoBehaviour
     public void hubWorld()
     {
         SceneManager.LoadScene("HubWorld");
+    }
+
+    public void playerWin()
+    {
+            hubPortal.SetActive(true);
     }
 }

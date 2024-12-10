@@ -31,6 +31,9 @@ public class Tiger : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange, bossHitWall;
 
     public bool PhaseOneActive, PhaseTwoActive, PhaseThreeActive;
+    public bool isDead = false;
+
+    private int expAmount = 300;
 
     private void Awake()
     {
@@ -70,6 +73,8 @@ public class Tiger : MonoBehaviour
         }
         if(health <= 0)
         {
+            Died();
+            ExperienceManager.Instance.AddExperience(expAmount);
             Destroy(gameObject);
         }
         if(playerInAttackRange)
@@ -174,5 +179,10 @@ public class Tiger : MonoBehaviour
     {
         player.GetComponent<FPSController>().walkSpeed = basePlayerSpeed;
         player.GetComponent<FPSController>().jumpForce = basePlayerJumpHeight;
+    }
+
+    public void Died()
+    {
+        isDead = true;
     }
 }

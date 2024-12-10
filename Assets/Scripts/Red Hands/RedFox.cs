@@ -185,9 +185,4 @@ public class RedFox : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    public void TakeDamage(int Damage)
-    {
-        throw new System.NotImplementedException();
-    }
 }
