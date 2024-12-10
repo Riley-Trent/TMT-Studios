@@ -46,7 +46,6 @@ public class CardSelectionManager : MonoBehaviour
     public void SelectCard(Card selectedCard)
     {
         ApplyCardEffect(selectedCard);
-        cardSelectionUI.SetActive(false);
         gameManager.CursorOff();
         HideCardSelectionUI();
     }
@@ -81,6 +80,5 @@ public class CardSelectionManager : MonoBehaviour
     {
         cardPrefab.SetActive(false);
         cardContainer.gameObject.SetActive(false);
-        cardSelectionUI.SetActive(false);
     }
 }
