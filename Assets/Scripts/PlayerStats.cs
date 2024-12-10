@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public GameObject hpLostUI, moneyLostUI, powerupUI;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] private GameManager gameManager;
+    
     private float health;
 
     public float money;
@@ -88,6 +89,8 @@ public class PlayerStats : MonoBehaviour
         maxExperience += 100;
         experienceBar.SetSliderMax(maxExperience);
         experienceBar.SetSlider(currentExperience);
+
+        FindObjectOfType<CardSelectionManager>().ShowCardSelection();
     }
 
     public void HealDamage(float amount)

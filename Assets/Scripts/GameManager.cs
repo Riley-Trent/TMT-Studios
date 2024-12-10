@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Tiger tiger;
     [SerializeField] private GameObject hubPortal;
+    [SerializeField] private GameObject bossHealthBar;
 
 
     private void Start(){
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         if(tiger.isDead)
         {
+            bossHealthBar.SetActive(false);
             playerWin();
         }
     }
@@ -38,11 +40,11 @@ public class GameManager : MonoBehaviour
         CursorOff();
     }
 
-    private void CursorOff(){
+    public void CursorOff(){
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    private void CursorOn(){
+    public void CursorOn(){
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
