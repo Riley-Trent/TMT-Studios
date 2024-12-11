@@ -1,18 +1,13 @@
 using UnityEngine;
 
-public class Tiger : MonoBehaviour
+public class Tiger : Enemy
 {
 
     public HealthBar healthBar;
-    public Transform player;
     public Transform boss;
 
-    public LayerMask setPlayer, setWall;
-    public float health;
+    public LayerMask setWall;
 
-    [SerializeField] public float maxHealth;
-
-    public float damage = 5f;
 
     float basePlayerSpeed, basePlayerJumpHeight;
     public float speed;
@@ -27,15 +22,12 @@ public class Tiger : MonoBehaviour
 
     public bool isEncountered;
     //States
-    public float sightRange, attackRange, hitWallRange;
-    public bool playerInSightRange, playerInAttackRange, bossHitWall;
+    public float hitWallRange;
+    public bool bossHitWall;
 
     public bool PhaseOneActive, PhaseTwoActive, PhaseThreeActive;
-    public bool isDead = false;
 
-    private int expAmount = 300;
-
-    private void Awake()
+    protected override void Awake()
     {
         player = GameObject.Find("Player").transform;
         boss = GameObject.Find("Da Boss").transform;
@@ -45,9 +37,10 @@ public class Tiger : MonoBehaviour
 
         basePlayerSpeed = player.GetComponent<FPSController>().walkSpeed;
         basePlayerJumpHeight = player.GetComponent<FPSController>().jumpForce;
+        isDead = false;
     }
 
-    private void Update()
+    protected override void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, setPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, setPlayer);
@@ -148,7 +141,7 @@ public class Tiger : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
         isEncountered = true;
         health -= damage;
@@ -184,5 +177,9 @@ public class Tiger : MonoBehaviour
     public void Died()
     {
         isDead = true;
+    }
+    protected override void AttackPlayer()
+    {
+        //just added otherwise it would get mad
     }
 }
