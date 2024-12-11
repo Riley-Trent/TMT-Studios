@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
@@ -29,18 +28,6 @@ public class PlayerStats : MonoBehaviour
     private bool isDead;
 
     AudioSource audio;
-
-    private PlayerStats instance;
-    void Awake(){
-        if(instance == null){
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else{
-            Destroy(gameObject);
-        }
-        
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -51,36 +38,18 @@ public class PlayerStats : MonoBehaviour
         audio = GetComponent<AudioSource>();
         fpsController = GetComponent<FPSController>();
         powerupTimer = 0f;
-        
     }
+
     private void OnEnable()
     {
         ExperienceManager.Instance.OnExperienceChange += HandleExperienceChange;
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        
     }
 
     private void OnDisable()
     {
         ExperienceManager.Instance.OnExperienceChange -= HandleExperienceChange;
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode){
-        if (healthBar == null)
-        {
-            healthBar = FindObjectOfType<HealthBar>();
-        }
 
-        if (experienceBar == null)
-        {
-            experienceBar = FindObjectOfType<ExperienceBar>();
-        }
-
-        if (gameManager == null)
-        {
-            gameManager = FindObjectOfType<GameManager>();
-        }
-    }
     public void TakeDamage(float amount)
     {
         if(fortressOfFur)
