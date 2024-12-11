@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 interface IInteractable{
     public void Interact();
@@ -60,12 +61,26 @@ public class FPSController : MonoBehaviour
     private float groundCheckDelay = 0.1f;
     private float lastGroundedTime;
 
+    private static FPSController instance;
 
     private void Awake(){
+        if(instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }
         characterController = GetComponent<CharacterController>();
         wasGrounded = characterController.isGrounded;
         baseWalkSpeed = walkSpeed;
         baseJumpForce = jumpForce;
+        
+        HideCharacter();
+    
+    }
+    void OnEnable()
+    {
         input.MoveEvent += HandleMovement;
         input.ScurryEvent += ToggleScurry;
         input.JumpEvent += HandleJumping;
@@ -74,8 +89,48 @@ public class FPSController : MonoBehaviour
         input.InteractEvent += HandleInteract;
         input.AttackEvent += HandleAttack;
         input.StopAttackEvent += HandleStopAttack;
-        HideCharacter();
-    
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        if (input != null)
+        {
+            input.MoveEvent -= HandleMovement;
+            input.ScurryEvent -= ToggleScurry;
+            input.JumpEvent -= HandleJumping;
+            input.JumpCancelledEvent -= HandleJumpingCancelled;
+            input.LookEvent -= HandleRotation;
+            input.InteractEvent -= HandleInteract;
+            input.AttackEvent -= HandleAttack;
+            input.StopAttackEvent -= HandleStopAttack;
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (input == null)
+        {
+            input = FindObjectOfType<InputReader>();
+            if (input != null)
+            {
+                input.MoveEvent += HandleMovement;
+                input.ScurryEvent += ToggleScurry;
+                input.JumpEvent += HandleJumping;
+                input.JumpCancelledEvent += HandleJumpingCancelled;
+                input.LookEvent += HandleRotation;
+                input.InteractEvent += HandleInteract;
+                input.AttackEvent += HandleAttack;
+                input.StopAttackEvent += HandleStopAttack;
+            }
+        }
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if(characterController == null){
+            characterController = GetComponent<CharacterController>();
+        }
+        input.SetOnFoot();
     }
 
     private void Update(){
@@ -168,7 +223,7 @@ public class FPSController : MonoBehaviour
         currentMovement.x = worldDirection.x * speed;
         currentMovement.z = worldDirection.z * speed;
         
-
+        Debug.Log($"{currentMovement}");
         characterController.Move(currentMovement * Time.deltaTime);
 
     }
