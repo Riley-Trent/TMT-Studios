@@ -4115,10 +4115,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
+  experienceBar: {fileID: 0}
   maxHealth: 100
+  defense: 0
+  currentExperience: 0
+  maxExperience: 300
+  currentLevel: 1
+  experienceMultiplier: 1
   hpLostUI: {fileID: 0}
   moneyLostUI: {fileID: 0}
   powerupUI: {fileID: 0}
+  healthAmountText: {fileID: 0}
+  levelText: {fileID: 0}
+  expAmountText: {fileID: 0}
+  gameManager: {fileID: 0}
+  experienceManager: {fileID: 0}
   money: 45
   moneyText: {fileID: 0}
   moneyLostText: {fileID: 0}

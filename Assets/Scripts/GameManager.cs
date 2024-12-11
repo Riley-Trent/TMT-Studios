@@ -13,7 +13,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject hubPortal;
     [SerializeField] private GameObject bossHealthBar;
 
-
+    private GameManager instance;
+    private void Awake(){
+        if(instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }
+    }
     private void Start(){
         input.PauseEvent += HandlePause;
         input.ResumeEvent += HandleResume;

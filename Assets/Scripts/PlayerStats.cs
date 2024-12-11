@@ -15,6 +15,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public GameObject hpLostUI, moneyLostUI, powerupUI;
     [SerializeField] TextMeshProUGUI healthAmountText, levelText, expAmountText;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private ExperienceManager experienceManager;
+     private GameObject SearchgameManager;
     
     private float health;
 
@@ -55,31 +57,19 @@ public class PlayerStats : MonoBehaviour
     }
     private void OnEnable()
     {
-        ExperienceManager.Instance.OnExperienceChange += HandleExperienceChange;
+        experienceManager.OnExperienceChange += HandleExperienceChange;
         SceneManager.sceneLoaded += OnSceneLoaded;
         
     }
 
     private void OnDisable()
     {
-        ExperienceManager.Instance.OnExperienceChange -= HandleExperienceChange;
+        experienceManager.OnExperienceChange -= HandleExperienceChange;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode){
-        if (healthBar == null)
-        {
-            healthBar = FindObjectOfType<HealthBar>();
-        }
+        gameManager = GameObject.FindFirstObjectByType<GameManager>();
 
-        if (experienceBar == null)
-        {
-            experienceBar = FindObjectOfType<ExperienceBar>();
-        }
-
-        if (gameManager == null)
-        {
-            gameManager = FindObjectOfType<GameManager>();
-        }
     }
     public void TakeDamage(float amount)
     {
