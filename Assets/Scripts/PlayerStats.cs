@@ -9,10 +9,10 @@ public class PlayerStats : MonoBehaviour
     public HealthBar healthBar;
     public ExperienceBar experienceBar;
     [SerializeField] public float maxHealth;
-    [SerializeField] public int currentExperience, maxExperience, currentLevel;
+    [SerializeField] public int defense, currentExperience, maxExperience, currentLevel, experienceMultiplier;
 
     [SerializeField] public GameObject hpLostUI, moneyLostUI, powerupUI;
-    [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] TextMeshProUGUI healthAmountText, levelText, expAmountText;
     [SerializeField] private GameManager gameManager;
     
     private float health;
@@ -58,9 +58,9 @@ public class PlayerStats : MonoBehaviour
         }
         if(amount > 0)
         {
-            health -= amount;
-            healthBar.SetSlider(health);
+            health -= (amount -= defense);
             hpGainText.text = "- " + amount.ToString() + " HP";
+            UpdateHealthDisplay();
             hpLostUI.GetComponent<CanvasRenderer>().SetAlpha(1f);
             hpLostUI.GetComponent<TextMeshProUGUI>().color = Color.red;
             audio.Play();
@@ -70,8 +70,9 @@ public class PlayerStats : MonoBehaviour
 
     private void HandleExperienceChange(int newExperience)
     {
-        currentExperience += newExperience;
-        experienceBar.SetSlider(currentExperience);
+        currentExperience += newExperience * experienceMultiplier;
+        UpdateExperienceDisplay();
+        
         if(currentExperience >= maxExperience)
         {
             LevelUp();
@@ -80,25 +81,33 @@ public class PlayerStats : MonoBehaviour
 
     private void LevelUp()
     {
-        maxHealth +=10;
+        maxHealth += 10;
+        health += 10;
 
         currentLevel++;
         levelText.text = currentLevel.ToString();
 
         currentExperience = 0;
         maxExperience += 100;
-        experienceBar.SetSliderMax(maxExperience);
-        experienceBar.SetSlider(currentExperience);
+        UpdateExperienceDisplay();
+        UpdateHealthDisplay();
 
         FindObjectOfType<CardSelectionManager>().ShowCardSelection();
+        
     }
 
     public void HealDamage(float amount)
     {
+        
         health += amount;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
         healthBar.SetSlider(health);
         hpLostUI.GetComponent<CanvasRenderer>().SetAlpha(1f);
         hpLostUI.GetComponent<TextMeshProUGUI>().color = Color.green;
+        UpdateHealthDisplay();
         hpGainText.text = "+ " + amount.ToString() + " HP";
         hpLostUI.GetComponent<Graphic>().CrossFadeAlpha(0f, 2f, false);
     }
@@ -189,6 +198,29 @@ public class PlayerStats : MonoBehaviour
         fortressOfFurActive = false;
         powerupUI.SetActive(false);
         powerupTimer = 0f;
+    }
+
+    public void UpdateHealthDisplay()
+    {
+        healthAmountText.text = health.ToString() + "/" + maxHealth.ToString();
+        healthBar.SetSliderMax(maxHealth);
+        healthBar.SetSlider(health);
+    }
+
+    private void UpdateExperienceDisplay()
+    {
+        expAmountText.text = currentExperience.ToString() + "/" + maxExperience.ToString();
+        experienceBar.SetSliderMax(maxExperience);
+        experienceBar.SetSlider(currentExperience);
+    }
+    public float Health
+    {
+        get => health;
+        set
+        {
+            health = Mathf.Clamp(value, 0, maxHealth);
+            UpdateHealthDisplay();
+        }
     }
 
 }

@@ -39,12 +39,15 @@ public class CardSelectionManager : MonoBehaviour
             currentCards.Add(randomCard);
         }
         ShowCardSelectionUI();
+        SoundManager.PlaySound(SoundType.CARDSHUFFLE);
         cardSelectionUI.SetActive(true);
         cardPrefab.SetActive(false);
     }
 
     public void SelectCard(Card selectedCard)
     {
+        playerStats.UpdateHealthDisplay();
+        SoundManager.PlaySound(SoundType.CARDDEAL);
         ApplyCardEffect(selectedCard);
         gameManager.CursorOff();
         HideCardSelectionUI();
@@ -53,18 +56,24 @@ public class CardSelectionManager : MonoBehaviour
     private void ApplyCardEffect(Card card)
     {
         // Example: Modify player stats based on card type
-        /*switch (card.effectType)
+        switch (card.effectType)
         {
             case CardEffectType.HealthBoost:
                 playerStats.maxHealth += card.effectValue;
+                playerStats.Health += card.effectValue;
                 break;
             case CardEffectType.DamageBoost:
-                playerStats.fpsController.walkSpeed += card.effectValue;
+                //playerStats.fpsController.walkSpeed += card.effectValue;
                 break;
             case CardEffectType.ExperienceBoost:
-                playerStats.currentExperience += Mathf.RoundToInt(card.effectValue);
+                playerStats.experienceMultiplier += Mathf.RoundToInt(card.effectValue);
                 break;
-        }*/
+            case CardEffectType.DefenseBoost:
+                playerStats.defense += Mathf.RoundToInt(card.effectValue);
+                break;
+            case CardEffectType.GunBoost:
+                break;
+        }
 
         Debug.Log($"Applied {card.cardName}: {card.effectType} +{card.effectValue}");
     }
@@ -81,4 +90,5 @@ public class CardSelectionManager : MonoBehaviour
         cardPrefab.SetActive(false);
         cardContainer.gameObject.SetActive(false);
     }
+    
 }

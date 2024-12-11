@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef118a03f780ccb4cb987b37cf9ef0bc, type: 3}
-  m_Name: LifeBlossom
+  m_Name: TwinFangs
   m_EditorClassIdentifier: 
-  cardName: Life Blossom
-  description: As others fall you flourish. Permanently increases your health by
-    20 hp
-  effectType: 0
+  cardName: Twin Fangs
+  description: Two bites of justice with every pull of the trigger. Double Shot
+  effectType: 5
   effectValue: 10
   cardImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}

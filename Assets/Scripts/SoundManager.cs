@@ -9,7 +9,9 @@ public enum SoundType
     JUMP,
     LAND,
     FOOTSTEP,
-    HURT
+    HURT,
+    CARDSHUFFLE,
+    CARDDEAL
 }
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour

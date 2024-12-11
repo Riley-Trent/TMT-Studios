@@ -16,5 +16,6 @@ public enum CardEffectType
     DamageBoost,
     ExperienceBoost,
     SpeedBoost,
-    DefenseBoost
+    DefenseBoost,
+    GunBoost
 }
