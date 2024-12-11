@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4991478815888286361
+--- !u!1 &2380142781299372246
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1989031478895434324}
-  - component: {fileID: 1573954787141114819}
-  - component: {fileID: 7236340236935733432}
-  - component: {fileID: 4281681484770250317}
-  - component: {fileID: 314187132497246683}
-  - component: {fileID: 3334485350409068577}
+  - component: {fileID: 7377301557452461384}
+  - component: {fileID: 1316007548892049146}
+  - component: {fileID: 4969897538739198776}
+  - component: {fileID: 6901318163173133297}
+  - component: {fileID: 9070698766492198503}
+  - component: {fileID: 6719339858624053525}
   m_Layer: 0
-  m_Name: Devil
-  m_TagString: Untagged
+  m_Name: Da Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1989031478895434324
+--- !u!4 &7377301557452461384
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 2380142781299372246}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.48, y: -6.2, z: -8.82}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -72.27492, y: -4.324, z: -207.99}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1573954787141114819
+--- !u!33 &1316007548892049146
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 2380142781299372246}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7236340236935733432
+--- !u!23 &4969897538739198776
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 2380142781299372246}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e1c6a0a64beb49ec96272beefa468a5, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4281681484770250317
+--- !u!136 &6901318163173133297
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 2380142781299372246}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -105,45 +105,23 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &314187132497246683
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &3334485350409068577
+--- !u!114 &9070698766492198503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 2380142781299372246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead0aa49a7d484a438fcc70edb709dd0, type: 3}
+  m_Script: {fileID: 11500000, guid: ddcad3c9a17fee844a600d6af5d4ada0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 314187132497246683}
+  agent: {fileID: 0}
   player: {fileID: 0}
   setGround:
     serializedVersion: 2
@@ -151,12 +129,12 @@ MonoBehaviour:
   setPlayer:
     serializedVersion: 2
     m_Bits: 128
-  health: 60
-  maxHealth: 60
-  damage: 5
-  sightRange: 20
-  attackRange: 2
-  expAmount: 100
+  health: 0
+  maxHealth: 300
+  damage: 10
+  sightRange: 19
+  attackRange: 3
+  expAmount: 300
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   playerInSightRange: 0
@@ -165,9 +143,50 @@ MonoBehaviour:
   isDead: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
-  walkPointRange: 3
-  camera: {fileID: 0}
-  isLookedAt: 0
-  timeBetweenAttacks: 3
-  grinRange: 12
-  playerInGrinRange: 0
+  walkPointRange: 0
+  healthBar: {fileID: 0}
+  boss: {fileID: 7377301557452461384}
+  setWall:
+    serializedVersion: 2
+    m_Bits: 256
+  speed: 0
+  playerPosition: {x: 0, y: 0, z: 0}
+  timeBetweenAttacks: 1
+  wildChargeSetupInterval: 5
+  alreadyAttacked: 0
+  shadowStrikeDone: 0
+  wildChargeDone: 0
+  shadowStrikeStunPossible: 0
+  isEncountered: 0
+  hitWallRange: 10
+  bossHitWall: 0
+  PhaseOneActive: 0
+  PhaseTwoActive: 0
+  PhaseThreeActive: 0
+--- !u!54 &6719339858624053525
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2380142781299372246}
+  serializedVersion: 4
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1

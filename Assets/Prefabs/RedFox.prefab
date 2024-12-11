@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4991478815888286361
+--- !u!1 &4327133332438313571
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1989031478895434324}
-  - component: {fileID: 1573954787141114819}
-  - component: {fileID: 7236340236935733432}
-  - component: {fileID: 4281681484770250317}
-  - component: {fileID: 314187132497246683}
-  - component: {fileID: 3334485350409068577}
+  - component: {fileID: 1082817378049451706}
+  - component: {fileID: 4872559601786149574}
+  - component: {fileID: 7771800812190610526}
+  - component: {fileID: 5108404567973754643}
+  - component: {fileID: 2861281549652264068}
+  - component: {fileID: 213852683439511747}
   m_Layer: 0
-  m_Name: Devil
-  m_TagString: Untagged
+  m_Name: RedFox
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1989031478895434324
+--- !u!4 &1082817378049451706
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 4327133332438313571}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.48, y: -6.2, z: -8.82}
+  m_LocalPosition: {x: -60.574917, y: -4.305962, z: -45.49486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1573954787141114819
+--- !u!33 &4872559601786149574
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7236340236935733432
+--- !u!23 &7771800812190610526
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e1c6a0a64beb49ec96272beefa468a5, type: 2}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4281681484770250317
+--- !u!136 &5108404567973754643
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -109,17 +109,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &314187132497246683
+--- !u!195 &2861281549652264068
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -131,19 +131,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3334485350409068577
+--- !u!114 &213852683439511747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991478815888286361}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead0aa49a7d484a438fcc70edb709dd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c59afce993410d42aa9946022ea9627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 314187132497246683}
+  agent: {fileID: 2861281549652264068}
   player: {fileID: 0}
   setGround:
     serializedVersion: 2
@@ -151,8 +151,8 @@ MonoBehaviour:
   setPlayer:
     serializedVersion: 2
     m_Bits: 128
-  health: 60
-  maxHealth: 60
+  health: 30
+  maxHealth: 30
   damage: 5
   sightRange: 20
   attackRange: 2
@@ -165,9 +165,8 @@ MonoBehaviour:
   isDead: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
-  walkPointRange: 3
-  camera: {fileID: 0}
-  isLookedAt: 0
-  timeBetweenAttacks: 3
-  grinRange: 12
-  playerInGrinRange: 0
+  walkPointRange: 5
+  retreatPoint: {fileID: 0}
+  moneyStealAmount: 10
+  moneyStolen: 0
+  timeBetweenAttacks: 1
