@@ -5,7 +5,7 @@ using UnityEngine;
 public class DontDestroy : MonoBehaviour
 {
     // Start is called before the first frame update
-    private DontDestroy instance;
+    public static DontDestroy instance;
     void Awake(){
         if(instance == null){
             instance = this;

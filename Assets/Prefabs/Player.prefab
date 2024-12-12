@@ -4083,7 +4083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 0}
   walkSpeed: 5
-  scurryMultiplier: 2
+  scurryMultiplier: 6.15
   baseWalkSpeed: 3
   baseJumpForce: 5
   jumpForce: 7
@@ -4284,7 +4284,7 @@ MonoBehaviour:
   CameraView: {fileID: 4380135912258290931}
   Guns:
   - {fileID: 11400000, guid: e23f36d9d1f0f2d49819dcc3ab000b31, type: 2}
-  ActiveGun: {fileID: 0}
+  ActiveGun: {fileID: 11400000, guid: e23f36d9d1f0f2d49819dcc3ab000b31, type: 2}
 --- !u!1 &9140555123135515083
 GameObject:
   m_ObjectHideFlags: 0

@@ -88,7 +88,7 @@ public class GunScriptableObject : ScriptableObject
             yield return null;
         }
 
-        instance.transform.position = EndPoint;
+        //instance.transform.position = EndPoint;
 
         if (Hit.collider != null){
             //SurfaceManager.Instance.HandleImpact(Hit.transform.gameObject, EndPoint, Hit.normal, ImpactType, 0);
