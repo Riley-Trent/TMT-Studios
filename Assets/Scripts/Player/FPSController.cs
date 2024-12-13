@@ -223,7 +223,7 @@ public class FPSController : MonoBehaviour
         currentMovement.x = worldDirection.x * speed;
         currentMovement.z = worldDirection.z * speed;
         
-        Debug.Log($"{currentMovement}");
+        //Debug.Log($"{currentMovement}");
         characterController.Move(currentMovement * Time.deltaTime);
 
     }

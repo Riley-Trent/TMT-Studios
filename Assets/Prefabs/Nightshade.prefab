@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &488762422826698191
+--- !u!1 &4327133332438313571
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5979174977552490541}
-  - component: {fileID: 5697274957402449459}
-  - component: {fileID: 7464422573060377311}
-  - component: {fileID: 8771119232701297986}
-  - component: {fileID: 6026204732848256223}
-  - component: {fileID: 1012095537826767073}
+  - component: {fileID: 1082817378049451706}
+  - component: {fileID: 4872559601786149574}
+  - component: {fileID: 7771800812190610526}
+  - component: {fileID: 5108404567973754643}
+  - component: {fileID: 2861281549652264068}
+  - component: {fileID: 5296202440699563784}
   m_Layer: 0
-  m_Name: Thumper
+  m_Name: Nightshade
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5979174977552490541
+--- !u!4 &1082817378049451706
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488762422826698191}
+  m_GameObject: {fileID: 4327133332438313571}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.5, y: -6, z: -1.5}
+  m_LocalPosition: {x: -60.574917, y: -4.305962, z: -45.49486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5697274957402449459
+--- !u!33 &4872559601786149574
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488762422826698191}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7464422573060377311
+--- !u!23 &7771800812190610526
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488762422826698191}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 339eaed90fb604b4395b4fa7b322b57b, type: 2}
+  - {fileID: 2100000, guid: 3ab449af509a2d341ab17aec49665f50, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8771119232701297986
+--- !u!136 &5108404567973754643
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488762422826698191}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -109,13 +109,13 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &6026204732848256223
+--- !u!195 &2861281549652264068
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488762422826698191}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
@@ -131,20 +131,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1012095537826767073
+--- !u!114 &5296202440699563784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488762422826698191}
+  m_GameObject: {fileID: 4327133332438313571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d36eb2e73d45da043843c24cb0fce204, type: 3}
+  m_Script: {fileID: 11500000, guid: e51b4da5c46a7c24596cd1a4988ebce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 6026204732848256223}
-  player: {fileID: 8619872867445787734, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+  agent: {fileID: 2861281549652264068}
+  player: {fileID: 0}
   setGround:
     serializedVersion: 2
     m_Bits: 64
@@ -154,8 +154,8 @@ MonoBehaviour:
   health: 50
   maxHealth: 50
   damage: 10
-  sightRange: 20
-  attackRange: 2
+  sightRange: 40
+  attackRange: 4
   expAmount: 100
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
@@ -165,9 +165,8 @@ MonoBehaviour:
   isDead: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
-  walkPointRange: 5
-  slamRadius: 5
-  slamHeight: 10
-  slamDuration: 1
-  stunDuration: 2
-  timeBetweenSlams: 5
+  walkPointRange: 6
+  diveSpeedMultiplier: 2
+  damageReductionDuringDive: 0.5
+  diveCooldown: 5
+  timeBetweenAttacks: 3

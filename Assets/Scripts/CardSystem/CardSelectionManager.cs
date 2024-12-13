@@ -71,7 +71,10 @@ public class CardSelectionManager : MonoBehaviour
             case CardEffectType.DefenseBoost:
                 playerStats.defense += Mathf.RoundToInt(card.effectValue);
                 break;
-            case CardEffectType.GunBoost:
+            case CardEffectType.GunDamageBoost:
+                //GunScriptableObject.DamageConfig.Damage += Mathf.RoundToInt(card.effectValue);
+                break;
+            case CardEffectType.FireRateBoost:
                 break;
         }
 
