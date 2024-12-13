@@ -34,6 +34,7 @@ public class InputReader : ScriptableObject, PlayerInput.IOnFootActions, PlayerI
     public event Action<Vector2> LookEvent;
     public event Action InteractEvent;
     public event Action AttackEvent;
+    public event Action StopAttackEvent;
     public event Action PauseEvent;
     public event Action ResumeEvent;
 
@@ -88,6 +89,9 @@ public class InputReader : ScriptableObject, PlayerInput.IOnFootActions, PlayerI
         if (context.phase == InputActionPhase.Performed)
         {
             AttackEvent?.Invoke();
+        }else if(context.phase == InputActionPhase.Canceled)
+        {
+            StopAttackEvent?.Invoke();
         }
 
     }

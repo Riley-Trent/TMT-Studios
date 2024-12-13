@@ -3,45 +3,23 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Thumper : MonoBehaviour
+public class Thumper : Enemy
 {
-    public NavMeshAgent agent;
 
-    public Transform player;
+    public float slamRadius = 5f;
+    public float slamHeight = 10f;
+    public float slamDuration = 1f;
+    public float stunDuration = 2f;
 
-    public LayerMask setGround, setPlayer;
+    public float timeBetweenSlams = 5f;
+    private bool alreadySlammed, alreadyAttacked, playerInSlamRange;
 
-    public float health;
-    public float damage = 10f;
 
-    public float slamRadius = 5f; // Radius of the seismic slam effect
-    public float slamHeight = 10f; // Height of the jump
-    public float slamDuration = 1f; // Total time for the jump (up and down)
-    public float stunDuration = 2f; // Duration of player's stun
-
-    public float timeBetweenSlams = 5f; // Cooldown for Seismic Slam
-    private bool alreadySlammed;
-
-    [SerializeField] public GameObject HealthyHerb;
-
-    // Patrolling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
-
-    // States
-    public float sightRange;
-    public bool playerInSightRange;
-
-    private void Awake()
-    {
-        player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
-    }
-
-    private void Update()
+    protected override void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, setPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, setPlayer);
+        playerInSlamRange = Physics.CheckSphere(transform.position, slamRadius, setPlayer);
 
         if (!playerInSightRange && !alreadySlammed)
         {
@@ -53,48 +31,18 @@ public class Thumper : MonoBehaviour
             ChasePlayer();
         }
 
-        if (playerInSightRange && !alreadySlammed)
+        if (playerInSlamRange && !alreadySlammed)
         {
             PerformSlam();
         }
-    }
-
-    private void Patroling()
-    {
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
+        
+        if (playerInAttackRange && !isDead)
         {
-            agent.SetDestination(walkPoint);
-        }
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        // Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
-        {
-            walkPointSet = false;
+            AttackPlayer();
         }
     }
 
-    private void SearchWalkPoint()
-    {
-        // Pick a random point within range to walk to
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, setGround))
-        {
-            walkPointSet = true;
-        }
-    }
-
-    private void ChasePlayer()
-    {
-        agent.SetDestination(player.position);
-    }
+    
 
     private void PerformSlam()
     {
@@ -174,20 +122,25 @@ public class Thumper : MonoBehaviour
     {
         alreadySlammed = false;
     }
-
-    public void TakeDamage(float damageAmount)
+    private void ResetAttack()
     {
-        health -= damageAmount;
-
-        if (health <= 0)
-        {
-            DestroyEnemy();
-        }
+        alreadyAttacked = false;
     }
 
-    private void DestroyEnemy()
+    protected override void AttackPlayer(){
+        agent.SetDestination(transform.position);
+
+        transform.LookAt(player);
+        if(!alreadyAttacked)
+        {
+            player.GetComponent<PlayerStats>().TakeDamage(damage);
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), 1.5f);
+        }
+    }
+    public override void DestroyEnemy()
     {
-        Instantiate(HealthyHerb, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        ResetPlayerStun();
+        base.DestroyEnemy();
     }
 }

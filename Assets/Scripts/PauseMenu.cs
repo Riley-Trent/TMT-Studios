@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
     private InputAction menu;
     [SerializeField] private bool isPaused;
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject optionsMenuUI;
+    [SerializeField] public FPSController fPSController;
 
     void Awake()
     {
@@ -36,30 +38,45 @@ public class PauseMenu : MonoBehaviour
         if(isPaused)
         {
             ActivateMenu();
+            
         }
         else
         {
             DeactivateMenu();
+            
         }
     }
     void ActivateMenu()
     {
         Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         AudioListener.pause = true;
         pauseMenuUI.SetActive(true);
+        fPSController.lockCamera(true);
     }
     public void DeactivateMenu()
     {
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         AudioListener.pause = false;
         pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
         isPaused = false;
+        fPSController.lockCamera(false);
+        
     }
 
     public void QuitGame()
     {
+        Time.timeScale = 1;
         Debug.Log("Quitting game...");
         SceneManager.LoadScene(MainMenu);
+    }
+    public void ResumeTime(){
+        Time.timeScale = 1;
     }
  
 }

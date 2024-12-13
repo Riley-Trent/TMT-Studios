@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5f5a88ef26db744a18ac4e0b2002b9, type: 3}
-  m_Name: New Dialogue Object
+  m_Script: {fileID: 11500000, guid: ef118a03f780ccb4cb987b37cf9ef0bc, type: 3}
+  m_Name: Wombat'sBackbone
   m_EditorClassIdentifier: 
-  dialogue:
-  - This seems to be an empty trashcan.
-  responses: []
+  cardName: Wombat's Backbone
+  description: Increases your defense
+  effectType: 4
+  effectValue: 1
+  cardImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}

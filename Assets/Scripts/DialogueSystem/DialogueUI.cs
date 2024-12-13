@@ -6,6 +6,7 @@ public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private FPSController fPSController;
 
     public bool IsOpen { get; private set; }
     private ResponseHandler responseHandler;
@@ -23,7 +24,16 @@ public class DialogueUI : MonoBehaviour
     {
         IsOpen = true;
         dialogueBox.SetActive(true);
+        fPSController.lockCamera(true);
+        fPSController.lockJump(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
+        fPSController.crossHair.SetActive(false);
+        
+    }
+
+    public void AddResponseEvents(ResponseEvent[] responseEvents)
+    {
+        responseHandler.AddResponseEvents(responseEvents);
     }
 
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
@@ -48,12 +58,14 @@ public class DialogueUI : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             responseHandler.ShowResponses(dialogueObject.Responses);
+            
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             CloseDialogueBox();
+            
         }
         
     }
@@ -73,10 +85,19 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
-    private void CloseDialogueBox()
+    public void CloseDialogueBox()
     {
         IsOpen = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
+        fPSController.crossHair.SetActive(true);
+        fPSController.lockCamera(false);
+        fPSController.lockJump(false);
+    }
+    public void lockCamera(bool onOff){
+        fPSController.lockCamera(onOff);
+    }
+    public void lockJump(bool onOff){
+        fPSController.lockJump(onOff);
     }
 }

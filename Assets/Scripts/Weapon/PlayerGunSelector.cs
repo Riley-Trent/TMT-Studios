@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -6,6 +7,7 @@ public class PlayerGunSelector : MonoBehaviour
 {
     [SerializeField] private GunType Gun;
     [SerializeField] private Transform GunParent;
+    [SerializeField] private Transform GunTip;
     [SerializeField] private GameObject CameraView;
     [SerializeField] private List<GunScriptableObject> Guns;
     //[SerializeField] private PlayerIk InverseKinematics;
@@ -26,6 +28,13 @@ public class PlayerGunSelector : MonoBehaviour
         gun.Spawn(GunParent, this);
         
         gun.CameraPos = CameraView;
+        gun.GunTip = GunTip;
         
+    }
+    public void HideGun(){
+        ActiveGun.ModelPrefab.SetActive(false);
+    }
+    public void showGun(){
+        ActiveGun.ModelPrefab.SetActive(true);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 interface IInteractable{
     public void Interact();
@@ -30,10 +31,12 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float mouseYSensitivity = 2.0f;
     [SerializeField] private float upDownRange = 80.0f;
     [SerializeField] private float InteractRange = 80.0f;
+    [SerializeField] public GameObject crossHair;
 
     [Header("Misc")]
     [SerializeField] private float hideDelay = 1.0f;
     [SerializeField] private PlayerGunSelector GunSelector;
+    [SerializeField] private GameObject gunSpot;
 
     [Header("References")]
     [SerializeField] private Animator animator;
@@ -52,18 +55,35 @@ public class FPSController : MonoBehaviour
     private float verticalRotation;
     private bool isJumping = false;
     private bool isScurrying = false;
+    private bool isAttacking = false;
     private Vector2 moveInput;
     private IInteractable lastObject = null;
     public bool wasGrounded;
     private float groundCheckDelay = 0.1f;
     private float lastGroundedTime;
+    private bool cameraLock = false;
+    private bool cantJump = false;
 
+    private static FPSController instance;
 
     private void Awake(){
+        if(instance == null){
+            instance = this;
+            //DontDestroyOnLoad(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }
         characterController = GetComponent<CharacterController>();
         wasGrounded = characterController.isGrounded;
         baseWalkSpeed = walkSpeed;
         baseJumpForce = jumpForce;
+        
+        HideCharacter();
+    
+    }
+    void OnEnable()
+    {
         input.MoveEvent += HandleMovement;
         input.ScurryEvent += ToggleScurry;
         input.JumpEvent += HandleJumping;
@@ -71,8 +91,51 @@ public class FPSController : MonoBehaviour
         input.LookEvent += HandleRotation;
         input.InteractEvent += HandleInteract;
         input.AttackEvent += HandleAttack;
-        HideCharacter();
-    
+        input.StopAttackEvent += HandleStopAttack;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        lockCamera(false);
+    }
+    private void OnDisable()
+    {
+        if (input != null)
+        {
+            input.MoveEvent -= HandleMovement;
+            input.ScurryEvent -= ToggleScurry;
+            input.JumpEvent -= HandleJumping;
+            input.JumpCancelledEvent -= HandleJumpingCancelled;
+            input.LookEvent -= HandleRotation;
+            input.InteractEvent -= HandleInteract;
+            input.AttackEvent -= HandleAttack;
+            input.StopAttackEvent -= HandleStopAttack;
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (input == null)
+        {
+            input = FindObjectOfType<InputReader>();
+            if (input != null)
+            {
+                input.MoveEvent += HandleMovement;
+                input.ScurryEvent += ToggleScurry;
+                input.JumpEvent += HandleJumping;
+                input.JumpCancelledEvent += HandleJumpingCancelled;
+                input.LookEvent += HandleRotation;
+                input.InteractEvent += HandleInteract;
+                input.AttackEvent += HandleAttack;
+                input.StopAttackEvent += HandleStopAttack;
+            }
+        }
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if(characterController == null){
+            characterController = GetComponent<CharacterController>();
+        }
+        input.SetOnFoot();
+        lockCamera(false);
     }
 
     private void Update(){
@@ -81,6 +144,7 @@ public class FPSController : MonoBehaviour
         Look();
         Jump();
         Move();
+        Attack();
         
     }
 
@@ -93,8 +157,12 @@ public class FPSController : MonoBehaviour
         isScurrying = !isScurrying;
         if(isScurrying){
             SwitchToThirdPerson();
+            crossHair.SetActive(false);
+            gunSpot.SetActive(false);
         }else{
             SwitchToFirstPerson();
+            crossHair.SetActive(true);
+            gunSpot.SetActive(true);
         }
         animator.SetBool("IsScurrying", isScurrying);
     }
@@ -118,9 +186,12 @@ public class FPSController : MonoBehaviour
 
 
     void HandleJumping(){
-        isJumping = true;
-        animator.SetBool("IsJumping", true);
-        if (isJumping) SoundManager.PlaySound(SoundType.JUMP);
+        if(!cantJump){
+            isJumping = true;
+            animator.SetBool("IsJumping", true);
+            if (isJumping) SoundManager.PlaySound(SoundType.JUMP);
+        }
+        
     }
 
     void HandleJumpingCancelled(){
@@ -135,8 +206,17 @@ public class FPSController : MonoBehaviour
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
         
     }
+    void HandleStopAttack()
+    {
+        isAttacking = false;
+    }
     void HandleAttack(){
-        if(GunSelector.ActiveGun != null){
+        isAttacking = true;
+        
+    }
+    void Attack()
+    {
+        if(!isScurrying && isAttacking && GunSelector.ActiveGun != null){
             GunSelector.ActiveGun.Shoot();
         }
     }
@@ -153,7 +233,7 @@ public class FPSController : MonoBehaviour
         currentMovement.x = worldDirection.x * speed;
         currentMovement.z = worldDirection.z * speed;
         
-
+        //Debug.Log($"{currentMovement}");
         characterController.Move(currentMovement * Time.deltaTime);
 
     }
@@ -178,11 +258,12 @@ public class FPSController : MonoBehaviour
 
     void Look()
     {
-  
-        transform.Rotate(0, mouseXRotation, 0);
-        //changed from this because animation rotation stumped me
-        //Head.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
-        Head.transform.localRotation = Quaternion.Euler(0, 0, verticalRotation);
+        if(!cameraLock){
+            transform.Rotate(0, mouseXRotation, 0);
+            //changed from this because animation rotation stumped me
+            //Head.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+            Head.transform.localRotation = Quaternion.Euler(0, 0, verticalRotation);
+        }
     }
 
     void SwitchToThirdPerson()
@@ -274,6 +355,13 @@ public class FPSController : MonoBehaviour
     {
         yield return new WaitForSeconds(hideDelay);
         HideCharacter();
+    }
+
+    public void lockCamera(bool onOff){
+        cameraLock = onOff;
+    }
+    public void lockJump(bool onOff){
+        cantJump = onOff;
     }
 
 }

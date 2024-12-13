@@ -3,20 +3,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TasmanianDevil : MonoBehaviour
+public class TasmanianDevil : Enemy
 {
-    public NavMeshAgent agent;
-
-    public Transform player;
-
-    public LayerMask setGround, setPlayer;
-
-    public float health;
-
-    public float damage = 5f;
-
-    [SerializeField] public GameObject HealthyHerb;
-
     public Camera camera;
     MeshRenderer renderer;
     Plane[] cameraFrustum;
@@ -24,10 +12,6 @@ public class TasmanianDevil : MonoBehaviour
 
     public bool isLookedAt;
 
-    //Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
 
     //Attacking
     public float timeBetweenAttacks;
@@ -41,25 +25,18 @@ public class TasmanianDevil : MonoBehaviour
     float playerBaseJumpHeight;
 
     //States
-    public float sightRange, attackRange, grinRange;
-    public bool playerInSightRange, playerInAttackRange, playerInGrinRange;
+    public float grinRange;
+    public bool playerInGrinRange;
 
     void Start()
     {
         renderer = GetComponent<MeshRenderer>();
         collider = GetComponent<Collider>();
-    }
-
-    private void Awake()
-    {
-        player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
-        agentSpeed = agent.speed;
         playerBaseWalkSpeed = player.GetComponent<FPSController>().walkSpeed;
         playerBaseJumpHeight = player.GetComponent<FPSController>().jumpForce;
     }
 
-    private void Update()
+    protected override void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, setPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, setPlayer);
@@ -70,7 +47,7 @@ public class TasmanianDevil : MonoBehaviour
             Patroling();
         }
 
-        if(playerInSightRange && !playerInAttackRange && !alreadyAttacked)
+        if((playerInSightRange || isAttacked) && !playerInAttackRange && !alreadyAttacked)
         {
             ChasePlayer();
         }
@@ -98,44 +75,8 @@ public class TasmanianDevil : MonoBehaviour
         }
     }
 
-    private void Patroling()
-    {
-        if(!walkPointSet) SearchWalkPoint();
-
-        if(walkPointSet)
-        {
-            agent.SetDestination(walkPoint);
-        }
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //Walkpoint reached
-        if(distanceToWalkPoint.magnitude < 1f)
-        {
-            walkPointSet = false;
-        }
-    }
-
-    private void SearchWalkPoint()
-    {
-        //For picking where to walk around
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, setGround))
-        {
-            walkPointSet = true;
-        }
-    }
-
-    private void ChasePlayer()
-    {
-        agent.SetDestination(player.position);
-    }
-
-    private void AttackPlayer()
+   
+    protected override void AttackPlayer()
     {
         agent.SetDestination(transform.position);
 
@@ -187,19 +128,9 @@ public class TasmanianDevil : MonoBehaviour
         player.GetComponent<FPSController>().jumpForce = playerBaseJumpHeight;
     }
 
-    public void TakeDamage(float damage)
+    public override void DestroyEnemy()
     {
-        health -= damage;
-
-        if(health <= 0)
-        {
-            Invoke(nameof(DestroyEnemy), .5f);
-        }
-    }
-
-    private void DestroyEnemy()
-    {
-        Instantiate(HealthyHerb, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        ResetStun();
+        base.DestroyEnemy();
     }
 }
