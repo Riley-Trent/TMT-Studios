@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     private InputAction menu;
     [SerializeField] private bool isPaused;
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject optionsMenuUI;
     [SerializeField] public FPSController fPSController;
 
     void Awake()
@@ -62,6 +63,7 @@ public class PauseMenu : MonoBehaviour
         
         AudioListener.pause = false;
         pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
         isPaused = false;
         fPSController.lockCamera(false);
         

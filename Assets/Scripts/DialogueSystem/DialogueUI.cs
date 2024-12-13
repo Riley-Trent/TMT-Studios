@@ -25,6 +25,7 @@ public class DialogueUI : MonoBehaviour
         IsOpen = true;
         dialogueBox.SetActive(true);
         fPSController.lockCamera(true);
+        fPSController.lockJump(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
         fPSController.crossHair.SetActive(false);
         
@@ -91,6 +92,7 @@ public class DialogueUI : MonoBehaviour
         textLabel.text = string.Empty;
         fPSController.crossHair.SetActive(true);
         fPSController.lockCamera(false);
+        fPSController.lockJump(false);
     }
     public void lockCamera(bool onOff){
         fPSController.lockCamera(onOff);

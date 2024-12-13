@@ -4082,12 +4082,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 0}
-  walkSpeed: 5
-  scurryMultiplier: 6.15
+  walkSpeed: 8
+  scurryMultiplier: 2
   baseWalkSpeed: 3
   baseJumpForce: 5
   jumpForce: 7
-  gravity: 9.8
+  gravity: 14
   mouseXSensitivity: 0.1
   mouseYSensitivity: 0.1
   upDownRange: 80
@@ -4095,6 +4095,7 @@ MonoBehaviour:
   crossHair: {fileID: 260361620891198107}
   hideDelay: 0
   GunSelector: {fileID: 1691946096238589809}
+  gunSpot: {fileID: 4463544767567581037}
   animator: {fileID: 8964984684070191237}
   input: {fileID: 11400000, guid: 8f1173ae6af62c741858ed99ad22c1fd, type: 2}
   Head: {fileID: 2421528067744500500}

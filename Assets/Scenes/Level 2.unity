@@ -5954,7 +5954,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1082817378049451706, guid: bde0f98fab277ef4aac569b08148f4f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.6347513
+      value: -23.5
       objectReference: {fileID: 0}
     - target: {fileID: 1082817378049451706, guid: bde0f98fab277ef4aac569b08148f4f8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5962,7 +5962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1082817378049451706, guid: bde0f98fab277ef4aac569b08148f4f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.544455
+      value: -12.5
       objectReference: {fileID: 0}
     - target: {fileID: 1082817378049451706, guid: bde0f98fab277ef4aac569b08148f4f8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6260,6 +6260,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 159645422}
     - target: {fileID: 3360737012132132363, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: defense
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360737012132132363, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
       propertyPath: hpLostUI
       value: 
       objectReference: {fileID: 826981665}
@@ -6271,6 +6275,10 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 1898304181}
+    - target: {fileID: 3360737012132132363, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3360737012132132363, guid: 142197c9928f1de44881cf63418f0c34, type: 3}
       propertyPath: moneyText
       value: 
@@ -14939,7 +14947,7 @@ MonoBehaviour:
     DefaultMode: 2
   DefaultBlend:
     Style: 1
-    Time: 2
+    Time: 0.5
     CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -18864,6 +18872,7 @@ MonoBehaviour:
   MainMenu: MainMenu
   isPaused: 0
   pauseMenuUI: {fileID: 1439254287}
+  optionsMenuUI: {fileID: 0}
   fPSController: {fileID: 488984688}
 --- !u!224 &1335440880
 RectTransform:
@@ -20528,7 +20537,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1082817378049451706, guid: bde0f98fab277ef4aac569b08148f4f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6347513
+      value: -23.5
       objectReference: {fileID: 0}
     - target: {fileID: 1082817378049451706, guid: bde0f98fab277ef4aac569b08148f4f8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20536,7 +20545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1082817378049451706, guid: bde0f98fab277ef4aac569b08148f4f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.544455
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 1082817378049451706, guid: bde0f98fab277ef4aac569b08148f4f8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20723,6 +20732,7 @@ MonoBehaviour:
   MainMenu: MainMenu
   isPaused: 0
   pauseMenuUI: {fileID: 1335440877}
+  optionsMenuUI: {fileID: 0}
   fPSController: {fileID: 0}
 --- !u!114 &1439254289
 MonoBehaviour:

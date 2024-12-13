@@ -36,6 +36,7 @@ public class FPSController : MonoBehaviour
     [Header("Misc")]
     [SerializeField] private float hideDelay = 1.0f;
     [SerializeField] private PlayerGunSelector GunSelector;
+    [SerializeField] private GameObject gunSpot;
 
     [Header("References")]
     [SerializeField] private Animator animator;
@@ -157,9 +158,11 @@ public class FPSController : MonoBehaviour
         if(isScurrying){
             SwitchToThirdPerson();
             crossHair.SetActive(false);
+            gunSpot.SetActive(false);
         }else{
             SwitchToFirstPerson();
             crossHair.SetActive(true);
+            gunSpot.SetActive(true);
         }
         animator.SetBool("IsScurrying", isScurrying);
     }
@@ -213,7 +216,7 @@ public class FPSController : MonoBehaviour
     }
     void Attack()
     {
-        if(isAttacking && GunSelector.ActiveGun != null){
+        if(!isScurrying && isAttacking && GunSelector.ActiveGun != null){
             GunSelector.ActiveGun.Shoot();
         }
     }

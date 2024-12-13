@@ -19,7 +19,12 @@ public class RedFox : Enemy
     {
         moneyStolen = 0f;
     }
-
+    protected override void Update()
+    {
+        if(!alreadyAttacked){
+            base.Update();
+        }
+    }
     protected override void AttackPlayer()
     {
         agent.SetDestination(transform.position);

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -29,5 +30,11 @@ public class PlayerGunSelector : MonoBehaviour
         gun.CameraPos = CameraView;
         gun.GunTip = GunTip;
         
+    }
+    public void HideGun(){
+        ActiveGun.ModelPrefab.SetActive(false);
+    }
+    public void showGun(){
+        ActiveGun.ModelPrefab.SetActive(true);
     }
 }

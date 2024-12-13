@@ -154,7 +154,7 @@ MonoBehaviour:
   health: 50
   maxHealth: 50
   damage: 10
-  sightRange: 40
+  sightRange: 50
   attackRange: 5
   expAmount: 100
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
