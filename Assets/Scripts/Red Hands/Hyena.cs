@@ -24,7 +24,7 @@ public class Hyena : Enemy
 
     //States
     public float inverseRange;
-    public bool playerInInverseRange, isRessurecting, preparingBulletBarrage, canAttack;
+    public bool playerInInverseRange, isRessurecting, preparingBulletBarrage, canAttack, isEngaged;
 
     public MeshRenderer rend;
     AudioSource audio;
@@ -56,8 +56,11 @@ public class Hyena : Enemy
             Patroling();
         }
 
-        if((playerInSightRange || isAttacked) && !playerInAttackRange && !alreadyAttacked && !isDead)
+        if((playerInSightRange || isAttacked || isEngaged) && !playerInAttackRange && !alreadyAttacked && !isDead)
         {
+            isEngaged = true;
+            hyena1.GetComponent<Hyena>().isEngaged = true;
+            hyena2.GetComponent<Hyena>().isEngaged = true;
             ChasePlayer();
         }
 
@@ -80,12 +83,12 @@ public class Hyena : Enemy
             canAttack = true;
         }
 
-        if(((hyena1.GetComponent<Hyena>().isDead == true) || (hyena2.GetComponent<Hyena>().isDead == true)) && !isDead && !isRessurecting)
+        if(((hyena1.GetComponent<Hyena>().isDead == true) || (hyena2.GetComponent<Hyena>().isDead == true)) && !isDead && !isRessurecting && isEngaged)
         {
             StartCoroutine(HyenaResurrectStart());
         }
 
-        if(!preparingBulletBarrage)
+        if(!preparingBulletBarrage && isEngaged)
         {
             StartCoroutine(HyenaBulletBarrage());
         }
