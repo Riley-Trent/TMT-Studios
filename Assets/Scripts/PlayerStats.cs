@@ -112,9 +112,12 @@ public class PlayerStats : MonoBehaviour
         maxExperience += 100;
         UpdateExperienceDisplay();
         UpdateHealthDisplay();
-
+        fpsController.lockCamera(true);
         FindObjectOfType<CardSelectionManager>().ShowCardSelection();
         
+    }
+    public void lockCamera(bool onOff){
+        fpsController.lockCamera(onOff);
     }
 
     public void HealDamage(float amount)

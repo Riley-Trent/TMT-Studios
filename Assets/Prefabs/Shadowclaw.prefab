@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7771800812190610526}
   - component: {fileID: 5108404567973754643}
   - component: {fileID: 2861281549652264068}
+  - component: {fileID: 7005890113415040464}
   m_Layer: 0
   m_Name: Shadowclaw
   m_TagString: Enemy
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3ab449af509a2d341ab17aec49665f50, type: 2}
+  - {fileID: 2100000, guid: bbc4b325995efbd44aa26354d7f592d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,3 +131,44 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7005890113415040464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4327133332438313571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd9b9ead7f3414499f1eda724588fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2861281549652264068}
+  player: {fileID: 0}
+  setGround:
+    serializedVersion: 2
+    m_Bits: 64
+  setPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  health: 60
+  maxHealth: 60
+  damage: 5
+  sightRange: 40
+  attackRange: 20
+  expAmount: 100
+  HealthyHerb: {fileID: 0}
+  FortressOfFur: {fileID: 0}
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  isAttacked: 0
+  isDead: 0
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointSet: 0
+  walkPointRange: 0
+  clawDamage: 5
+  clawDuration: 5
+  clawRange: 5
+  clawCooldown: 10
+  attackSpeedBuff: 1.5
+  buffDuration: 5

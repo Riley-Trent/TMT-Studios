@@ -56,10 +56,12 @@ public class ResponseHandler : MonoBehaviour
             Destroy(button);
         }
         tempResponseButtons.Clear();
-
+        dialogueUI.lockCamera(false);
+        dialogueUI.lockJump(false);
         if (responseEvents != null && responseIndex <= responseEvents.Length)
         {
             responseEvents[responseIndex].onPickedResponse?.Invoke();
+            
         }
 
         responseEvents = null;

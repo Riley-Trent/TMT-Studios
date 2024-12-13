@@ -151,8 +151,8 @@ MonoBehaviour:
   setPlayer:
     serializedVersion: 2
     m_Bits: 128
-  health: 600
-  maxHealth: 600
+  health: 200
+  maxHealth: 200
   damage: 10
   sightRange: 200
   attackRange: 2
@@ -172,6 +172,7 @@ MonoBehaviour:
   hyena2: {fileID: 0}
   jumpPoint: {fileID: 0}
   hyenaBullet: {fileID: 2572167851111520879, guid: f9f2ac3a5471ebe49a1a2525ce315523, type: 3}
+  tiger: {fileID: 0}
   speed: 0
   timeBetweenAttacks: 1
   inverseRange: 0
@@ -179,4 +180,4 @@ MonoBehaviour:
   isRessurecting: 0
   preparingBulletBarrage: 0
   canAttack: 0
-  rend: {fileID: 0}
+  rend: {fileID: 6006683620522868883}

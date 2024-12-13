@@ -1649,7 +1649,6 @@ GameObject:
   - component: {fileID: 9009975077691581722}
   - component: {fileID: 4950360076343154920}
   - component: {fileID: 6299258220886466360}
-  - component: {fileID: 4699994188316613063}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -1749,18 +1748,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4699994188316613063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4913668003610250024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e00c294c65b345f4896414becc20ae74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4991718754307689070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,7 +1915,7 @@ RectTransform:
   m_Father: {fileID: 5865193373008771477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3085,7 +3072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5391691935457688751, guid: e02bdb5a0ebb921429cf23249d563149, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5391691935457688751, guid: e02bdb5a0ebb921429cf23249d563149, type: 3}
       propertyPath: m_margin.w
@@ -3100,8 +3087,16 @@ PrefabInstance:
       value: -28.534203
       objectReference: {fileID: 0}
     - target: {fileID: 5391691935457688751, guid: e02bdb5a0ebb921429cf23249d563149, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5391691935457688751, guid: e02bdb5a0ebb921429cf23249d563149, type: 3}
       propertyPath: m_fontSizeBase
-      value: 25
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391691935457688751, guid: e02bdb5a0ebb921429cf23249d563149, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6095336739450631856, guid: e02bdb5a0ebb921429cf23249d563149, type: 3}
       propertyPath: m_Name

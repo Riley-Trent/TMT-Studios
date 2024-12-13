@@ -60,6 +60,8 @@ public class FPSController : MonoBehaviour
     public bool wasGrounded;
     private float groundCheckDelay = 0.1f;
     private float lastGroundedTime;
+    private bool cameraLock = false;
+    private bool cantJump = false;
 
     private static FPSController instance;
 
@@ -90,6 +92,7 @@ public class FPSController : MonoBehaviour
         input.AttackEvent += HandleAttack;
         input.StopAttackEvent += HandleStopAttack;
         SceneManager.sceneLoaded += OnSceneLoaded;
+        lockCamera(false);
     }
     private void OnDisable()
     {
@@ -131,6 +134,7 @@ public class FPSController : MonoBehaviour
             characterController = GetComponent<CharacterController>();
         }
         input.SetOnFoot();
+        lockCamera(false);
     }
 
     private void Update(){
@@ -179,9 +183,12 @@ public class FPSController : MonoBehaviour
 
 
     void HandleJumping(){
-        isJumping = true;
-        animator.SetBool("IsJumping", true);
-        if (isJumping) SoundManager.PlaySound(SoundType.JUMP);
+        if(!cantJump){
+            isJumping = true;
+            animator.SetBool("IsJumping", true);
+            if (isJumping) SoundManager.PlaySound(SoundType.JUMP);
+        }
+        
     }
 
     void HandleJumpingCancelled(){
@@ -248,11 +255,12 @@ public class FPSController : MonoBehaviour
 
     void Look()
     {
-  
-        transform.Rotate(0, mouseXRotation, 0);
-        //changed from this because animation rotation stumped me
-        //Head.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
-        Head.transform.localRotation = Quaternion.Euler(0, 0, verticalRotation);
+        if(!cameraLock){
+            transform.Rotate(0, mouseXRotation, 0);
+            //changed from this because animation rotation stumped me
+            //Head.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+            Head.transform.localRotation = Quaternion.Euler(0, 0, verticalRotation);
+        }
     }
 
     void SwitchToThirdPerson()
@@ -344,6 +352,13 @@ public class FPSController : MonoBehaviour
     {
         yield return new WaitForSeconds(hideDelay);
         HideCharacter();
+    }
+
+    public void lockCamera(bool onOff){
+        cameraLock = onOff;
+    }
+    public void lockJump(bool onOff){
+        cantJump = onOff;
     }
 
 }

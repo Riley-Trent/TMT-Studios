@@ -14,6 +14,7 @@ public class Hyena : Enemy
     public Transform hyenaBulletPosition;
 
     [SerializeField] public GameObject hyena1, hyena2, jumpPoint, hyenaBullet;
+    public Tiger tiger; //tiger for game manager stuff.... its bad... real bad...
 
     public float speed;
 
@@ -181,8 +182,9 @@ public class Hyena : Enemy
         preparingBulletBarrage = false;
     }
 
-    private void DestroyEnemy()
+    public override void DestroyEnemy()
     {
-        Destroy(gameObject);
+        tiger.isDead = true;
+        base.DestroyEnemy();
     }
 }

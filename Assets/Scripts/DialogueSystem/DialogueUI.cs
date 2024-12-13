@@ -24,8 +24,10 @@ public class DialogueUI : MonoBehaviour
     {
         IsOpen = true;
         dialogueBox.SetActive(true);
+        fPSController.lockCamera(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
         fPSController.crossHair.SetActive(false);
+        
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -55,12 +57,14 @@ public class DialogueUI : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             responseHandler.ShowResponses(dialogueObject.Responses);
+            
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             CloseDialogueBox();
+            
         }
         
     }
@@ -86,5 +90,12 @@ public class DialogueUI : MonoBehaviour
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
         fPSController.crossHair.SetActive(true);
+        fPSController.lockCamera(false);
+    }
+    public void lockCamera(bool onOff){
+        fPSController.lockCamera(onOff);
+    }
+    public void lockJump(bool onOff){
+        fPSController.lockJump(onOff);
     }
 }

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Tiger tiger;
     [SerializeField] private GameObject hubPortal;
     [SerializeField] private GameObject bossHealthBar;
+    [SerializeField] private FPSController player;
 
     public static GameManager instance;
     void Awake(){
@@ -27,10 +28,10 @@ public class GameManager : MonoBehaviour
         //tiger = FindObjectOfType<Tiger>();
     }
     private void Start(){
+        input.SetOnFoot();
         input.PauseEvent += HandlePause;
         input.ResumeEvent += HandleResume;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        CursorOff();
     }
 
     private void Update()
@@ -65,21 +66,25 @@ public class GameManager : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         CursorOn();
+        player.lockCamera(true);
     }
     
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        player.lockCamera(false);
     }
 
     public void mainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        player.lockCamera(false);
     }
 
     public void hubWorld()
     {
         SceneManager.LoadScene("HubWorld");
+        player.lockCamera(false);
     }
 
     public void playerWin()

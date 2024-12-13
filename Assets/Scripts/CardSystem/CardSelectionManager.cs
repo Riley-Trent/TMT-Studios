@@ -54,6 +54,7 @@ public class CardSelectionManager : MonoBehaviour
         ApplyCardEffect(selectedCard);
         gameManager.CursorOff();
         HideCardSelectionUI();
+        playerStats.lockCamera(false);
     }
 
     private void ApplyCardEffect(Card card)

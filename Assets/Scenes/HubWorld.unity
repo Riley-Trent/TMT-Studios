@@ -175,6 +175,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1441939584}
     - target: {fileID: 789365691422722462, guid: bb5651aa0c42f0449a58c10763cd3db0, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1252276894}
+    - target: {fileID: 789365691422722462, guid: bb5651aa0c42f0449a58c10763cd3db0, type: 3}
       propertyPath: hubPortal
       value: 
       objectReference: {fileID: 1048607775}
@@ -196,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 801716181703757773, guid: bb5651aa0c42f0449a58c10763cd3db0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6379,6 +6383,10 @@ PrefabInstance:
       value: UIDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 8147984523814890404, guid: 567a99dc1facc1d4589e59ac14818b69, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1252276894}
+    - target: {fileID: 8147984523814890404, guid: 567a99dc1facc1d4589e59ac14818b69, type: 3}
       propertyPath: fPSController
       value: 
       objectReference: {fileID: 1252276894}
@@ -8784,6 +8792,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6161804793478164838, guid: 2309371e20e784848a1b691f3e1f8d57, type: 3}
+      propertyPath: fPSController
+      value: 
+      objectReference: {fileID: 1252276894}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

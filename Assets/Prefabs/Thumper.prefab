@@ -156,7 +156,7 @@ MonoBehaviour:
   damage: 10
   sightRange: 20
   attackRange: 2
-  expAmount: 100
+  expAmount: 75
   HealthyHerb: {fileID: 2036601712343936508, guid: 37f13a77c8a8fde4f8514c489bc3a661, type: 3}
   FortressOfFur: {fileID: 9101277937866940807, guid: a31f127b807d97841b2f04e4b2ff11c5, type: 3}
   playerInSightRange: 0

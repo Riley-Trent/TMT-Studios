@@ -4093,7 +4093,7 @@ MonoBehaviour:
   upDownRange: 80
   InteractRange: 80
   crossHair: {fileID: 260361620891198107}
-  hideDelay: 1.5
+  hideDelay: 0
   GunSelector: {fileID: 1691946096238589809}
   animator: {fileID: 8964984684070191237}
   input: {fileID: 11400000, guid: 8f1173ae6af62c741858ed99ad22c1fd, type: 2}
