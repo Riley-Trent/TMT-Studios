@@ -42,10 +42,13 @@ public class CardSelectionManager : MonoBehaviour
         SoundManager.PlaySound(SoundType.CARDSHUFFLE);
         cardSelectionUI.SetActive(true);
         cardPrefab.SetActive(false);
+        Time.timeScale = 0;
+
     }
 
     public void SelectCard(Card selectedCard)
     {
+        Time.timeScale = 1;
         playerStats.UpdateHealthDisplay();
         SoundManager.PlaySound(SoundType.CARDDEAL);
         ApplyCardEffect(selectedCard);
