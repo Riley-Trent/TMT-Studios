@@ -24,6 +24,7 @@ public class Tiger : Enemy
     //States
     public float hitWallRange;
     public bool bossHitWall;
+    public bool healthBarActive = false;
 
     public bool PhaseOneActive, PhaseTwoActive, PhaseThreeActive;
 
@@ -45,9 +46,12 @@ public class Tiger : Enemy
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, setPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, setPlayer);
         bossHitWall = Physics.CheckSphere(transform.position, hitWallRange, setWall);
-
+        if(isEncountered && !healthBarActive){
+            healthBar.gameObject.SetActive(true);
+        }
         if((playerInSightRange || isEncountered) && health > (maxHealth * 0.67f))
         {
+            healthBarActive = true;
             isEncountered = true;
             PhaseOneActive = true;
             PhaseOne();
@@ -177,6 +181,7 @@ public class Tiger : Enemy
     public void Died()
     {
         isDead = true;
+        healthBar.gameObject.SetActive(false);
     }
     protected override void AttackPlayer()
     {
